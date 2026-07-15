@@ -248,8 +248,8 @@
         <span class="stat-label">Planned / To Do</span>
       </div>
       <div class="stat">
-        <span class="stat-num purple">8</span>
-        <span class="stat-label">Future (CIL-6148)</span>
+        <span class="stat-num purple">5</span>
+        <span class="stat-label">BA Pipeline Commands (CIL-6148)</span>
       </div>
     </div>
   </div>
@@ -293,16 +293,13 @@
     <div class="split-card future">
       <div class="split-label future">What FlowForge will do IN THE FUTURE</div>
       <h3>BA Upstream Pipeline — Coming Next</h3>
-      <p>CIL-6148 adds 7 new commands covering the full pre-spec phase, closing the 6–10h upstream gap currently unsupported.</p>
+      <p>CIL-6148 adds 5 commands (1 patch + 4 new) covering the full pre-spec phase, closing the 6–10h upstream gap. /ff.research and /ff.ideate are internal phases of /ff.discover; /ff.split is Phase 4 of /ff.require.</p>
       <ul class="cap-list">
-        <li><strong>/ff.start</strong> — Git pre-flight: auto-pull, branch conflict detection, clean-branch confirmation before creation</li>
-        <li><strong>/ff.discover</strong> — Structured problem framing interview (Problem Framer, Journey Mapper, Value Validator, Risk Spotter) → <code>0-discovery.md</code></li>
-        <li><strong>/ff.research</strong> — Parallel Confluence, Jira, and codebase scan (3 agents) → <code>0-research.md</code></li>
-        <li><strong>/ff.ideate</strong> — 3–4 structured solution options with recommendation and lane signals → <code>0-options.md</code></li>
-        <li><strong>/ff.require enhanced</strong> — 5 additional post-capture agents: Completeness Auditor, Edge Case Hunter, Ambiguity Detector, GDPR Probe, Scope Guard</li>
-        <li><strong>/ff.split</strong> — Epic decomposition into independently deliverable stories with MVP slice and dependency map → <code>0-split-map.md</code></li>
-        <li><strong>/ff.refine</strong> — Refinement meeting prep (agenda) + post-session decision transcription and Jira sync</li>
-        <li><strong>/ff.prd</strong> — Stakeholder PRD assembly from all upstream outputs and Confluence publishing</li>
+        <li><strong>/ff.start (patched)</strong> — Initialises status.json on first run (schema: start_confirmed, start_branch, jira_key, jira_sub_keys, confluence_url, phase, last_updated)</li>
+        <li><strong>/ff.discover</strong> — ONE command, 3 internal phases, 10 agents: Problem Framing (4 agents sequential) → Landscape Research (3 agents parallel + Research Synthesiser) → Solution Ideation (Option Generators + Recommender + Lane Estimator) → produces 0-discovery.md, 0-research.md, 0-options.md</li>
+        <li><strong>/ff.require enhanced</strong> — 5 phases, 8 agents: spec capture + 8-agent review (3 existing + 5 new) + Decomposition Assessor (Phase 4: writes 0-split-map.md, creates sub-specs) + Agenda Builder (Phase 5: writes 0-refine-agenda.md). Creates Jira tickets with 4-section description at end.</li>
+        <li><strong>/ff.refine</strong> — Live meeting facilitation only: loads agenda from /ff.require Phase 5, guided item-by-item loop, option selection, Spec Editor + Jira Sync with hierarchy enforcement (theme → initiative → epic → task)</li>
+        <li><strong>/ff.prd</strong> — 13-section PRD assembly and Confluence publish; persists as living document, auto-triggers on engineering phases modifying 1-spec.md, stores confluence_url in status.json</li>
       </ul>
     </div>
   </div>
@@ -386,7 +383,7 @@
     <div class="compare-col c3">
       <div>
         <div class="compare-stage">Era 3 · What's Still Coming</div>
-        <h4>12 Planned + 8 BA Future Tasks</h4>
+        <h4>12 Planned + 5 BA Upstream Commands</h4>
         <p class="desc">PROD-13009 To Do (Phase 6) + CIL-6148 BA upstream pipeline — completing the full feature lifecycle.</p>
       </div>
       <hr class="compare-divider">
@@ -403,15 +400,13 @@
         <li>Version awareness in-project</li>
       </ul>
       <hr class="compare-divider">
-      <div class="compare-sub-label">BA Upstream Pipeline (CIL-6148)</div>
+      <div class="compare-sub-label">BA Upstream Pipeline (CIL-6148) — 5 commands</div>
       <ul class="cap-items">
-        <li>/ff.discover — structured problem framing interview → discovery.md</li>
-        <li>/ff.research — parallel Confluence, Jira &amp; codebase scan</li>
-        <li>/ff.ideate — 3–4 solution options with lane signals</li>
-        <li>/ff.require enhanced — 5 new post-capture review agents</li>
-        <li>/ff.split — epic decomposition with MVP slice &amp; dependency map</li>
-        <li>/ff.refine — meeting prep &amp; post-session Jira sync</li>
-        <li>/ff.prd — stakeholder PRD + Confluence publish</li>
+        <li>/ff.start patched — status.json initialisation guard</li>
+        <li>/ff.discover — 3 phases, 10 agents: problem framing + landscape research (Jira Linker: 4-dimension search + comment threads) + solution ideation → 0-discovery.md, 0-research.md, 0-options.md</li>
+        <li>/ff.require enhanced — 5 phases, 8 agents: review panel + Decomposition Assessor (Phase 4, writes 0-split-map.md) + Agenda Builder (Phase 5, writes 0-refine-agenda.md) + Jira tickets with 4-section description</li>
+        <li>/ff.refine — live facilitation: loads 0-refine-agenda.md, Spec Editor + Jira Sync with hierarchy enforcement</li>
+        <li>/ff.prd — 13-section living PRD, auto-updates on spec changes, confluence_url → status.json</li>
       </ul>
     </div>
   </div>
@@ -533,33 +528,23 @@
       </div>
       <div class="benefit-cards">
         <div class="benefit-card ba">
-          <div class="bcard-title">Structured discovery → clean spec hand-off</div>
-          <div class="bcard-body">/ff.discover runs a 4-agent problem framing interview (Problem Framer, Journey Mapper, Value Validator, Risk Spotter) and outputs a structured discovery.md — reducing unstructured kick-off meetings.</div>
+          <div class="bcard-title">/ff.discover — 3-phase, 10-agent upstream research in one command</div>
+          <div class="bcard-body">Phase 1: Problem Framing (4 agents sequential). Phase 2: Landscape Research (Confluence Scanner + Jira Linker with 4-dimension search and full comment threads + Pattern Scout, parallel, merged by Research Synthesiser). Phase 3: Solution Ideation (3 Option Generators + Recommender + Lane Estimator). Produces 0-discovery.md, 0-research.md, 0-options.md.</div>
           <span class="bcard-tag future">CIL-6148</span>
         </div>
         <div class="benefit-card ba">
-          <div class="bcard-title">Parallel Confluence, Jira &amp; codebase research</div>
-          <div class="bcard-body">/ff.research runs 3 agents in parallel across Confluence, Jira history, and the codebase to surface existing implementations, prior decisions, and relevant constraints — before a line of spec is written.</div>
+          <div class="bcard-title">/ff.require enhanced — 5 phases, 8 agents, Jira tickets + agenda</div>
+          <div class="bcard-body">Phases 2–3: 8-agent review (3 existing + 5 new). Phase 4: Decomposition Assessor writes 0-split-map.md with JSON schema and creates sub-specs at specs/&lt;id&gt;-&lt;sub&gt;/1-spec.md. Phase 5: Agenda Builder writes 0-refine-agenda.md where each unresolved finding becomes a numbered item with 2–3 suggested resolutions. Jira tickets at end have 4-section description.</div>
           <span class="bcard-tag future">CIL-6148</span>
         </div>
         <div class="benefit-card ba">
-          <div class="bcard-title">Epic decomposition with MVP slice &amp; dependency map</div>
-          <div class="bcard-body">/ff.split breaks an epic into independently deliverable stories, identifies the minimum viable slice, and maps inter-story dependencies — replacing manual decomposition workshops that typically take 1–2h.</div>
+          <div class="bcard-title">/ff.refine — live meeting facilitation with Jira hierarchy enforcement</div>
+          <div class="bcard-body">Loads agenda from /ff.require Phase 5. Guided item-by-item loop with option selection and custom option support. Transcript upload offer. Spec Editor updates 1-spec.md; Jira Sync enforces hierarchy (theme → initiative → epic → task; no parentless tickets below theme). All writes user-confirmed.</div>
           <span class="bcard-tag future">CIL-6148</span>
         </div>
         <div class="benefit-card ba">
-          <div class="bcard-title">Stakeholder PRD assembly &amp; Confluence publish</div>
-          <div class="bcard-body">/ff.prd assembles all upstream outputs (discovery, research, options, spec, split map) into a stakeholder PRD and publishes to Confluence automatically — no manual document assembly required.</div>
-          <span class="bcard-tag future">CIL-6148</span>
-        </div>
-        <div class="benefit-card ba">
-          <div class="bcard-title">5 additional post-capture review agents for /ff.require</div>
-          <div class="bcard-body">Enhanced /ff.require adds Completeness Auditor, Edge Case Hunter, Ambiguity Detector, GDPR Probe, and Scope Guard — so every spec exits capture having passed 5 additional quality lenses.</div>
-          <span class="bcard-tag future">CIL-6148</span>
-        </div>
-        <div class="benefit-card ba">
-          <div class="bcard-title">Refinement prep &amp; post-session Jira sync</div>
-          <div class="bcard-body">/ff.refine generates a refinement agenda pre-meeting and transcribes post-session decisions directly to Jira tickets — turning refinement output into structured backlog items without manual write-up.</div>
+          <div class="bcard-title">/ff.prd — 13-section living PRD with Confluence auto-update</div>
+          <div class="bcard-body">Assembles all upstream outputs (discovery, research, options, spec, split-map) into a 13-section stakeholder PRD. Persists as a living document — auto-triggers on any engineering phase that modifies 1-spec.md. Stores Confluence URL in status.json. No manual document assembly required.</div>
           <span class="bcard-tag future">CIL-6148</span>
         </div>
       </div>
@@ -678,7 +663,7 @@
         <div class="tl-dot-wrap"><div class="tl-dot future-dot"></div></div>
         <div class="tl-content">
           <h4>BA Upstream Pipeline (CIL-6148) — Backlog</h4>
-          <p>Full upstream BA pipeline with 7 new commands: /ff.start, /ff.discover, /ff.research, /ff.ideate, /ff.require-enhanced, /ff.split, /ff.refine, /ff.prd. Targets −45% BA time per feature and −33% total cycle time.</p>
+          <p>Full upstream BA pipeline: 5 commands (1 patch + 4 new). /ff.discover (3 phases, 10 agents → 3 artifacts), /ff.require enhanced (5 phases, 8 agents, Jira tickets + agenda), /ff.refine (live facilitation, Jira hierarchy enforcement), /ff.prd (13-section living PRD). /ff.research and /ff.ideate are internal phases of /ff.discover; decomposition is Phase 4 of /ff.require. Targets −45% BA time per feature and −33% total cycle time.</p>
           <div class="tl-chips">
             <span class="tl-chip" style="border-color:var(--future-border);color:#d2a8ff;">CIL-6171</span>
             <span class="tl-chip" style="border-color:var(--future-border);color:#d2a8ff;">CIL-6172</span>
@@ -928,7 +913,7 @@
       <div class="epic-icon">⬆</div>
       <div class="epic-info">
         <h3>CIL-6148 — BA/PO Upstream Pipeline</h3>
-        <p>Closes the 6–10h upstream gap before spec capture. Introduces 7 new commands and 1 enhanced command. Target: −45% BA time per feature, −33% total cycle time.</p>
+        <p>Closes the 6–10h upstream gap before spec capture. 5 commands: /ff.start (patched) + /ff.discover (3 phases, 10 agents) + /ff.require enhanced (5 phases, 8 agents) + /ff.refine (live facilitation) + /ff.prd (13-section living PRD). Target: −45% BA time per feature, −33% total cycle time.</p>
         <div class="epic-badge-row">
           <span class="pill highlight">8 tasks — all Backlog</span>
           <span class="pill">Status: To Do (Epic)</span>
@@ -966,7 +951,7 @@
           <span class="ticket-key">CIL-6173 · T003</span>
           <span class="badge future-badge">Backlog</span>
         </div>
-        <div class="ticket-title">Author /ff.research skill — parallel Confluence, Jira &amp; codebase scan</div>
+        <div class="ticket-title">Author /ff.discover Phase 2 — parallel Confluence, Jira &amp; codebase scan (internal phase of /ff.discover)</div>
         <div class="ticket-meta">
           <span class="ticket-type">Task</span>
           <span class="ticket-assignee">Sascha Mehlhase</span>
@@ -977,7 +962,7 @@
           <span class="ticket-key">CIL-6174 · T004</span>
           <span class="badge future-badge">Backlog</span>
         </div>
-        <div class="ticket-title">Author /ff.ideate skill — structured solution option generation</div>
+        <div class="ticket-title">Author /ff.discover Phase 3 — structured solution option generation (internal phase of /ff.discover)</div>
         <div class="ticket-meta">
           <span class="ticket-type">Task</span>
           <span class="ticket-assignee">Sascha Mehlhase</span>
@@ -999,7 +984,7 @@
           <span class="ticket-key">CIL-6176 · T006</span>
           <span class="badge future-badge">Backlog</span>
         </div>
-        <div class="ticket-title">Author /ff.split skill — epic decomposition with MVP slice and dependency map</div>
+        <div class="ticket-title">Author /ff.require Phase 4 — Decomposition Assessor (0-split-map.md + sub-specs; internal phase of /ff.require)</div>
         <div class="ticket-meta">
           <span class="ticket-type">Task</span>
           <span class="ticket-assignee">Sascha Mehlhase</span>
@@ -1010,7 +995,7 @@
           <span class="ticket-key">CIL-6177 · T007</span>
           <span class="badge future-badge">Backlog</span>
         </div>
-        <div class="ticket-title">Author /ff.refine skill — refinement meeting prep and post-session Jira sync</div>
+        <div class="ticket-title">Author /ff.refine skill — live meeting facilitation with agenda load, Spec Editor, and Jira hierarchy enforcement</div>
         <div class="ticket-meta">
           <span class="ticket-type">Task</span>
           <span class="ticket-assignee">Sascha Mehlhase</span>
