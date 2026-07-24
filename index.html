@@ -33,17 +33,21 @@
     --review: #0891b2;
     --review-bg: #0c1e26;
     --review-border: #22d3ee;
+    --integrate: #c96a00;
+    --integrate-bg: #1a0e00;
+    --integrate-border: #f78166;
   }
   body { background: var(--bg); color: var(--text); font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif; font-size: 14px; line-height: 1.6; }
 
-  /* ── HERO ── */
+  /* HERO */
   .hero { background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0a1a1f 100%); border-bottom: 1px solid var(--border); padding: 56px 40px 48px; }
-  .hero-inner { max-width: 1200px; margin: 0 auto; }
+  .hero-inner { max-width: 1280px; margin: 0 auto; }
   .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: #0d1b0f; border: 1px solid #2ea043; border-radius: 20px; padding: 4px 14px; font-size: 12px; color: #3fb950; font-weight: 600; letter-spacing: .04em; margin-bottom: 20px; }
-  .hero-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #3fb950; display: inline-block; }
+  .hero-badge::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: #3fb950; display: inline-block; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
   .hero h1 { font-size: 36px; font-weight: 700; line-height: 1.2; margin-bottom: 14px; }
   .hero h1 span { color: var(--ff-green); }
-  .hero .sub { color: var(--muted); font-size: 15px; max-width: 760px; margin-bottom: 32px; }
+  .hero .sub { color: var(--muted); font-size: 15px; max-width: 820px; margin-bottom: 32px; }
   .hero-stats { display: flex; gap: 40px; flex-wrap: wrap; }
   .stat { display: flex; flex-direction: column; }
   .stat-num { font-size: 28px; font-weight: 700; color: var(--text); }
@@ -53,17 +57,22 @@
   .stat-num.blue { color: var(--accent); }
   .stat-num.purple { color: #a371f7; }
   .stat-num.cyan { color: #22d3ee; }
+  .stat-num.orange { color: #f78166; }
 
-  /* ── VISION ── */
-  .vision-bar { background: var(--surface2); border-bottom: 1px solid var(--border); padding: 28px 40px; }
-  .vision-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 24px; align-items: flex-start; }
-  .vision-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
-  .vision-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ff-green); margin-bottom: 6px; }
-  .vision-text { font-size: 15px; color: var(--text); line-height: 1.7; max-width: 900px; }
+  /* STRATEGY BANNER */
+  .strategy-bar { background: var(--surface2); border-bottom: 1px solid var(--border); padding: 32px 40px; }
+  .strategy-inner { max-width: 1280px; margin: 0 auto; }
+  .strategy-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--ff-green); margin-bottom: 14px; }
+  .strategy-text { font-size: 15px; color: var(--text); line-height: 1.8; max-width: 960px; margin-bottom: 28px; }
+  .strategy-pillars { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+  .pillar { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
+  .pillar-icon { font-size: 20px; margin-bottom: 8px; }
+  .pillar-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; }
+  .pillar-body { font-size: 12px; color: var(--muted); line-height: 1.5; }
 
-  /* ── LEGEND ── */
+  /* LEGEND */
   .legend-bar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 10px 40px; }
-  .legend-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+  .legend-bar-inner { max-width: 1280px; margin: 0 auto; display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
   .legend-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); }
   .dot { width: 10px; height: 10px; border-radius: 50%; }
   .dot.done { background: var(--done-border); }
@@ -71,30 +80,10 @@
   .dot.planned { background: var(--planned-border); }
   .dot.future { background: var(--future-border); }
   .dot.review { background: var(--review-border); }
+  .dot.integrate { background: var(--integrate-border); }
 
-  /* ── PHASE TIMELINE TABLE ── */
-  .phase-table-section { max-width: 1200px; margin: 48px auto 0; padding: 0 40px; }
-  .phase-table-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-  .phase-table-sub { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
-  .phase-table { width: 100%; border-collapse: collapse; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
-  .phase-table th { background: var(--surface2); color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
-  .phase-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: top; }
-  .phase-table tr:last-child td { border-bottom: none; }
-  .phase-table tr:hover td { background: var(--surface2); }
-  .phase-num { font-size: 11px; font-weight: 700; color: var(--muted); }
-  .phase-cmd { font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
-  .phase-cmd.ba { background: var(--future-bg); color: #d2a8ff; border: 1px solid var(--future-border); }
-  .phase-cmd.gen { background: var(--done-bg); color: #3fb950; border: 1px solid var(--done-border); }
-  .phase-cmd.rev { background: var(--review-bg); color: #22d3ee; border: 1px solid var(--review-border); }
-  .status-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
-  .status-pill.live { background: var(--done-bg); color: #3fb950; border: 1px solid var(--done-border); }
-  .status-pill.indev { background: var(--inprogress-bg); color: #d29922; border: 1px solid var(--inprogress-border); }
-  .status-pill.planned { background: var(--planned-bg); color: #79c0ff; border: 1px solid var(--planned-border); }
-  .status-pill.future { background: var(--future-bg); color: #d2a8ff; border: 1px solid var(--future-border); }
-  .jira-link { font-size: 11px; color: var(--accent); font-weight: 600; }
-
-  /* ── FULL LIFECYCLE FLOW ── */
-  .lifecycle-section { max-width: 1200px; margin: 56px auto 0; padding: 0 40px; }
+  /* LIFECYCLE FLOW */
+  .lifecycle-section { max-width: 1280px; margin: 56px auto 0; padding: 0 40px; }
   .lifecycle-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
   .lifecycle-sub { color: var(--muted); font-size: 13px; margin-bottom: 28px; }
   .lifecycle-flow { display: flex; align-items: stretch; gap: 0; overflow-x: auto; padding-bottom: 8px; }
@@ -104,19 +93,21 @@
   .flow-box.gen-phase { border-color: var(--done-border); background: var(--done-bg); }
   .flow-box.rev-phase { border-color: var(--review-border); background: var(--review-bg); }
   .flow-box.human-phase { border-color: var(--inprogress-border); background: var(--inprogress-bg); }
+  .flow-box.int-phase { border-color: var(--integrate-border); background: var(--integrate-bg); }
   .flow-cmd { font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; font-size: 11px; font-weight: 700; }
   .flow-cmd.ba-phase { color: #d2a8ff; }
   .flow-cmd.gen-phase { color: #3fb950; }
   .flow-cmd.rev-phase { color: #22d3ee; }
   .flow-cmd.human-phase { color: #d29922; }
+  .flow-cmd.int-phase { color: #f78166; }
   .flow-label { font-size: 10px; color: var(--muted); line-height: 1.3; text-align: center; }
   .flow-arrow { display: flex; align-items: center; padding: 0 4px; color: var(--muted); font-size: 18px; flex-shrink: 0; align-self: center; }
 
-  /* ── MAIN CONTENT ── */
-  main { max-width: 1200px; margin: 0 auto; padding: 40px; }
+  /* MAIN */
+  main { max-width: 1280px; margin: 0 auto; padding: 40px; }
 
-  /* ── SECTION HEADERS ── */
-  .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; margin-top: 56px; }
+  /* SECTION HEADERS */
+  .section-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; margin-top: 64px; }
   .section-header:first-child { margin-top: 0; }
   .section-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; }
   .section-dot.done { background: var(--done-border); box-shadow: 0 0 8px #2ea04355; }
@@ -124,953 +115,845 @@
   .section-dot.planned { background: var(--planned-border); box-shadow: 0 0 8px #388bfd55; }
   .section-dot.future-dot { background: var(--future-border); box-shadow: 0 0 8px #8957e555; }
   .section-dot.review-dot { background: var(--review-border); box-shadow: 0 0 8px #22d3ee55; }
+  .section-dot.integrate-dot { background: var(--integrate-border); box-shadow: 0 0 8px #f7816655; }
   .section-header h2 { font-size: 20px; font-weight: 700; }
   .section-desc { color: var(--muted); font-size: 13px; margin-left: auto; white-space: nowrap; }
-  .phase-label-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; border-radius: 4px; padding: 2px 8px; flex-shrink: 0; }
-  .phase-label-tag.ba { background: var(--future-bg); color: #d2a8ff; border: 1px solid var(--future-border); }
-  .phase-label-tag.gen { background: var(--done-bg); color: #3fb950; border: 1px solid var(--done-border); }
-  .phase-label-tag.rev { background: var(--review-bg); color: #22d3ee; border: 1px solid var(--review-border); }
 
-  /* ── TICKET GRID ── */
-  .ticket-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 16px; margin-bottom: 8px; }
-  .ticket-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; transition: border-color .15s; display: flex; flex-direction: column; gap: 10px; }
-  .ticket-card:hover { border-color: var(--accent); }
-  .ticket-card.done { border-left: 3px solid var(--done-border); }
-  .ticket-card.inprog { border-left: 3px solid var(--inprogress-border); }
-  .ticket-card.planned { border-left: 3px solid var(--planned-border); }
-  .ticket-card.future-card { border-left: 3px solid var(--future-border); }
-  .ticket-card.review-card { border-left: 3px solid var(--review-border); }
-  .ticket-card.closed { border-left: 3px solid var(--closed-border); opacity: .7; }
-  .ticket-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-  .ticket-key { font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: .04em; white-space: nowrap; }
-  .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; border-radius: 20px; padding: 2px 10px; white-space: nowrap; }
-  .badge.done { background: var(--done-bg); color: #3fb950; border: 1px solid var(--done-border); }
-  .badge.inprog { background: var(--inprogress-bg); color: #d29922; border: 1px solid var(--inprogress-border); }
-  .badge.planned { background: var(--planned-bg); color: #79c0ff; border: 1px solid var(--planned-border); }
-  .badge.future-badge { background: var(--future-bg); color: #d2a8ff; border: 1px solid var(--future-border); }
-  .badge.review-badge { background: var(--review-bg); color: #22d3ee; border: 1px solid var(--review-border); }
-  .badge.closed { background: var(--closed-bg); color: var(--muted); border: 1px solid var(--closed-border); }
-  .ticket-title { font-size: 13px; font-weight: 600; line-height: 1.5; color: var(--text); }
-  .ticket-meta { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-  .ticket-type { font-size: 11px; color: var(--muted); background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 7px; }
-  .ticket-assignee { font-size: 11px; color: var(--muted); }
-  .ticket-desc { font-size: 12px; color: var(--muted); line-height: 1.5; }
-
-  /* ── EPIC HEADER ── */
-  .epic-section { margin-bottom: 12px; }
-  .epic-header { background: var(--surface2); border: 1px solid var(--border); border-radius: 10px; padding: 22px 28px; margin-bottom: 20px; display: flex; align-items: flex-start; gap: 16px; }
-  .epic-header.future-card { border-left: 3px solid var(--future-border); }
-  .epic-header.review-card { border-left: 3px solid var(--review-border); }
-  .epic-icon { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
-  .epic-icon.future { background: var(--future-bg); border: 1px solid var(--future-border); }
+  /* EPIC HEADER */
+  .epic-header { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; margin-bottom: 24px; }
+  .epic-header.gen { border-left: 4px solid var(--done-border); }
+  .epic-header.review-card { border-left: 4px solid var(--review-border); }
+  .epic-header.ba-card { border-left: 4px solid var(--future-border); }
+  .epic-header.int-card { border-left: 4px solid var(--integrate-border); }
+  .epic-header-top { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 16px; }
+  .epic-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+  .epic-icon.gen { background: var(--done-bg); border: 1px solid var(--done-border); }
   .epic-icon.review { background: var(--review-bg); border: 1px solid var(--review-border); }
+  .epic-icon.ba { background: var(--future-bg); border: 1px solid var(--future-border); }
+  .epic-icon.int { background: var(--integrate-bg); border: 1px solid var(--integrate-border); }
   .epic-info { flex: 1; }
-  .epic-info h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-  .epic-info p { color: var(--muted); font-size: 13px; line-height: 1.6; }
-  .epic-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .epic-key { font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: .04em; margin-bottom: 4px; }
+  .epic-info h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .epic-info p { color: var(--muted); font-size: 13px; line-height: 1.6; max-width: 760px; }
+  .epic-badge-row { display: flex; gap: 8px; flex-wrap: wrap; }
   .pill { font-size: 11px; background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 2px 10px; color: var(--muted); }
-  .pill.highlight-future { background: var(--future-bg); border-color: var(--future-border); color: #d2a8ff; }
-  .pill.highlight-review { background: var(--review-bg); border-color: var(--review-border); color: #22d3ee; }
+  .pill.gen { background: var(--done-bg); border-color: var(--done-border); color: #3fb950; }
+  .pill.rev { background: var(--review-bg); border-color: var(--review-border); color: #22d3ee; }
+  .pill.ba { background: var(--future-bg); border-color: var(--future-border); color: #d2a8ff; }
+  .pill.int { background: var(--integrate-bg); border-color: var(--integrate-border); color: #f78166; }
 
-  /* ── ARCHITECTURE DIAGRAM ── */
-  .arch-diagram { background: var(--surface); border: 1px solid var(--review-border); border-radius: 12px; padding: 28px 32px; margin: 24px 0; }
-  .arch-title { font-size: 13px; font-weight: 700; color: #22d3ee; margin-bottom: 20px; text-transform: uppercase; letter-spacing: .06em; }
-  .arch-flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-  .arch-node { background: var(--surface2); border: 1px solid var(--review-border); border-radius: 8px; padding: 8px 14px; font-size: 12px; font-weight: 600; color: #22d3ee; white-space: nowrap; }
-  .arch-node.auto { background: var(--review-bg); }
-  .arch-node.human { background: #1a1008; border-color: var(--inprogress-border); color: #d29922; }
-  .arch-arrow { color: var(--muted); font-size: 16px; }
-  .arch-desc { margin-top: 16px; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
-  .arch-item { background: var(--surface2); border-radius: 8px; padding: 10px 14px; border-left: 2px solid var(--review-border); }
-  .arch-item-title { font-size: 12px; font-weight: 700; color: #22d3ee; margin-bottom: 3px; }
-  .arch-item-body { font-size: 11px; color: var(--muted); line-height: 1.5; }
+  /* PERSONAS */
+  .persona-row { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
+  .persona-chip { display: flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; font-size: 12px; }
+  .persona-chip.primary { border-color: var(--accent); }
+  .persona-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--surface2); display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; }
+  .persona-name { font-weight: 600; color: var(--text); }
+  .persona-role { font-size: 11px; color: var(--muted); }
 
-  /* ── PROGRESS BAR ── */
-  .progress-section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 32px; margin-bottom: 40px; }
+  /* PROGRESS SECTION */
+  .progress-section { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 32px; margin-bottom: 32px; }
   .progress-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
   .progress-sub { color: var(--muted); font-size: 12px; margin-bottom: 20px; }
-  .progress-bar-track { background: var(--surface2); border-radius: 8px; height: 16px; display: flex; overflow: hidden; margin-bottom: 14px; }
+  .progress-bar-track { background: var(--surface2); border-radius: 8px; height: 18px; display: flex; overflow: hidden; margin-bottom: 14px; }
   .progress-fill { height: 100%; transition: width .4s; }
   .progress-fill.done { background: var(--done-border); }
   .progress-fill.inprog { background: var(--inprogress-border); }
   .progress-fill.planned { background: var(--planned-border); }
   .progress-fill.future-fill { background: var(--future-border); }
   .progress-fill.review-fill { background: var(--review-border); }
+  .progress-fill.int-fill { background: var(--integrate-border); }
   .progress-legend { display: flex; gap: 24px; flex-wrap: wrap; }
-  .prog-leg-item { display: flex; align-items: center; gap: 7px; font-size: 12px; color: var(--muted); }
+  .prog-legend-item { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+  .prog-dot { width: 10px; height: 10px; border-radius: 3px; display: inline-block; flex-shrink: 0; }
 
-  /* ── SUMMARY / INFO BOXES ── */
-  .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; margin: 24px 0; }
-  .info-box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
-  .info-box.gen { border-top: 2px solid var(--done-border); }
-  .info-box.ba { border-top: 2px solid var(--future-border); }
-  .info-box.rev { border-top: 2px solid var(--review-border); }
-  .info-box-title { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
-  .info-box-title.gen { color: #3fb950; }
-  .info-box-title.ba { color: #d2a8ff; }
-  .info-box-title.rev { color: #22d3ee; }
-  .cap-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-  .cap-list li { display: flex; align-items: flex-start; gap: 8px; font-size: 12px; line-height: 1.5; color: var(--text); }
-  .cap-list.gen li::before { content: "✓"; color: var(--ff-green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-  .cap-list.ba li::before { content: "◆"; color: #a371f7; font-size: 10px; flex-shrink: 0; margin-top: 3px; }
-  .cap-list.rev li::before { content: "▶"; color: #22d3ee; font-size: 9px; flex-shrink: 0; margin-top: 4px; }
+  /* CLUSTER */
+  .cluster { margin-bottom: 32px; }
+  .cluster-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .cluster-icon { font-size: 18px; }
+  .cluster-title { font-size: 15px; font-weight: 700; }
+  .cluster-count { font-size: 11px; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 2px 10px; color: var(--muted); }
 
-  /* ── BENEFITS ── */
-  .benefits-section { margin-top: 56px; }
-  .benefits-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
-  .benefits-sub { color: var(--muted); font-size: 13px; margin-bottom: 28px; }
-  .benefit-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-bottom: 32px; }
-  .benefit-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; }
-  .benefit-card.vel { border-left: 3px solid var(--accent); }
-  .benefit-card.qual { border-left: 3px solid var(--ff-green); }
-  .benefit-card.obs { border-left: 3px solid var(--inprogress-border); }
-  .benefit-card.ba { border-left: 3px solid #a371f7; }
-  .benefit-card.rev { border-left: 3px solid var(--review-border); }
-  .benefit-card .bcard-title { font-size: 13px; font-weight: 600; line-height: 1.4; }
-  .benefit-card .bcard-body { color: var(--muted); font-size: 12px; line-height: 1.5; }
-  .benefit-card .bcard-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; border-radius: 4px; padding: 1px 6px; width: fit-content; margin-top: 2px; }
-  .bcard-tag.now { background: #0d1b0f; color: var(--ff-green); border: 1px solid #2ea04340; }
-  .bcard-tag.review { background: var(--review-bg); color: #22d3ee; border: 1px solid #22d3ee40; }
-  .bcard-tag.future { background: #1a1040; color: #d2a8ff; border: 1px solid #8957e540; }
-  .benefit-group-label { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; margin-top: 28px; }
-  .benefit-group-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
-  .benefit-group-label h3 { font-size: 14px; font-weight: 700; }
-  .benefit-group-label span.sub { color: var(--muted); font-size: 12px; }
+  /* CAPABILITY BOX */
+  .capability-box { background: var(--done-bg); border: 1px solid var(--done-border); border-radius: 10px; padding: 16px 20px; margin-bottom: 16px; }
+  .capability-box.planned { background: var(--planned-bg); border-color: var(--planned-border); }
+  .capability-box.inprog { background: var(--inprogress-bg); border-color: var(--inprogress-border); }
+  .capability-box.review { background: var(--review-bg); border-color: var(--review-border); }
+  .capability-box.future-box { background: var(--future-bg); border-color: var(--future-border); }
+  .capability-box.int-box { background: var(--integrate-bg); border-color: var(--integrate-border); }
+  .capability-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
+  .capability-label.done { color: #3fb950; }
+  .capability-label.planned { color: #79c0ff; }
+  .capability-label.inprog { color: #d29922; }
+  .capability-label.review { color: #22d3ee; }
+  .capability-label.future { color: #d2a8ff; }
+  .capability-label.int { color: #f78166; }
+  .capability-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+  .capability-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
 
-  /* ── TIMELINE (delivery) ── */
-  .timeline-section { margin: 48px 0; }
-  .timeline-title { font-size: 18px; font-weight: 700; margin-bottom: 24px; color: var(--text); }
-  .timeline { display: flex; flex-direction: column; gap: 0; position: relative; }
-  .timeline::before { content: ""; position: absolute; left: 140px; top: 0; bottom: 0; width: 2px; background: var(--border); }
-  .tl-row { display: flex; align-items: flex-start; gap: 24px; padding: 16px 0; }
-  .tl-label { width: 116px; flex-shrink: 0; text-align: right; font-size: 12px; font-weight: 700; color: var(--muted); padding-top: 4px; }
-  .tl-dot-wrap { width: 28px; flex-shrink: 0; display: flex; align-items: flex-start; justify-content: center; padding-top: 6px; position: relative; z-index: 1; }
-  .tl-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--bg); }
-  .tl-dot.done { background: var(--done-border); }
-  .tl-dot.inprog { background: var(--inprogress-border); }
-  .tl-dot.planned { background: var(--planned-border); }
-  .tl-dot.future-dot { background: var(--future-border); }
-  .tl-dot.review-dot { background: var(--review-border); }
-  .tl-content { flex: 1; }
-  .tl-content h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
-  .tl-content p { color: var(--muted); font-size: 12px; line-height: 1.6; }
-  .tl-chips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
-  .tl-chip { font-size: 11px; background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 2px 10px; color: var(--muted); }
+  /* TICKET GRID */
+  .ticket-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; margin-bottom: 8px; }
+  .ticket-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; transition: border-color .15s; display: flex; flex-direction: column; gap: 8px; }
+  .ticket-card:hover { border-color: var(--accent); }
+  .ticket-card.done { border-left: 3px solid var(--done-border); }
+  .ticket-card.inprog { border-left: 3px solid var(--inprogress-border); }
+  .ticket-card.planned { border-left: 3px solid var(--planned-border); }
+  .ticket-card.future-card { border-left: 3px solid var(--future-border); }
+  .ticket-card.review-card { border-left: 3px solid var(--review-border); }
+  .ticket-card.int-card { border-left: 3px solid var(--integrate-border); }
+  .ticket-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  .ticket-key { font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: .04em; white-space: nowrap; font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; }
+  .badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; border-radius: 20px; padding: 2px 10px; white-space: nowrap; }
+  .badge.done { background: var(--done-bg); color: #3fb950; border: 1px solid var(--done-border); }
+  .badge.inprog { background: var(--inprogress-bg); color: #d29922; border: 1px solid var(--inprogress-border); }
+  .badge.planned { background: var(--planned-bg); color: #79c0ff; border: 1px solid var(--planned-border); }
+  .badge.future-badge { background: var(--future-bg); color: #d2a8ff; border: 1px solid var(--future-border); }
+  .badge.review-badge { background: var(--review-bg); color: #22d3ee; border: 1px solid var(--review-border); }
+  .badge.int-badge { background: var(--integrate-bg); color: #f78166; border: 1px solid var(--integrate-border); }
+  .ticket-title { font-size: 13px; font-weight: 600; line-height: 1.5; color: var(--text); }
+  .ticket-meta { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .ticket-assignee { font-size: 11px; color: var(--muted); }
 
-  /* ── DIVIDER ── */
-  .section-divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+  /* ARCHITECTURE DIAGRAM */
+  .arch-diagram { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 28px 32px; margin: 24px 0; }
+  .arch-diagram.review-border { border-color: var(--review-border); }
+  .arch-diagram.ba-border { border-color: var(--future-border); }
+  .arch-diagram.int-border { border-color: var(--integrate-border); }
+  .arch-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 20px; }
+  .arch-title.review { color: #22d3ee; }
+  .arch-title.ba { color: #d2a8ff; }
+  .arch-title.int { color: #f78166; }
+  .arch-title.gen { color: #3fb950; }
+  .arch-flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .arch-node { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+  .arch-node.gen { border-color: var(--done-border); color: #3fb950; background: var(--done-bg); }
+  .arch-node.rev { border-color: var(--review-border); color: #22d3ee; background: var(--review-bg); }
+  .arch-node.ba { border-color: var(--future-border); color: #d2a8ff; background: var(--future-bg); }
+  .arch-node.human { background: var(--inprogress-bg); border-color: var(--inprogress-border); color: #d29922; }
+  .arch-node.int { background: var(--integrate-bg); border-color: var(--integrate-border); color: #f78166; }
+  .arch-arrow { color: var(--muted); font-size: 16px; }
+  .arch-desc { margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+  .arch-item { background: var(--surface2); border-radius: 8px; padding: 10px 14px; }
+  .arch-item.gen { border-left: 2px solid var(--done-border); }
+  .arch-item.rev { border-left: 2px solid var(--review-border); }
+  .arch-item.ba { border-left: 2px solid var(--future-border); }
+  .arch-item.int { border-left: 2px solid var(--integrate-border); }
+  .arch-item-title { font-size: 12px; font-weight: 700; margin-bottom: 3px; }
+  .arch-item-body { font-size: 11px; color: var(--muted); line-height: 1.5; }
 
-  /* ── FOOTER ── */
-  footer { background: var(--surface); border-top: 1px solid var(--border); padding: 28px 40px; text-align: center; color: var(--muted); font-size: 12px; margin-top: 48px; }
-  footer a { color: var(--accent); text-decoration: none; }
-  footer a:hover { text-decoration: underline; }
+  /* IMPACT GRID */
+  .impact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; margin: 20px 0; }
+  .impact-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+  .impact-card.before { border-top: 2px solid #6e7681; }
+  .impact-card.after { border-top: 2px solid var(--done-border); }
+  .impact-card.future { border-top: 2px solid var(--planned-border); }
+  .impact-card-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 10px; }
+  .impact-card-label.before { color: var(--muted); }
+  .impact-card-label.after { color: var(--ff-green); }
+  .impact-card-label.future { color: var(--accent); }
+  .impact-item { font-size: 12px; color: var(--muted); margin-bottom: 6px; display: flex; gap: 6px; align-items: flex-start; }
+  .impact-item::before { content: "›"; color: var(--done-border); font-weight: 700; flex-shrink: 0; }
+  .impact-card.before .impact-item::before { color: var(--muted); }
+  .impact-card.future .impact-item::before { color: var(--accent); }
 
-  code { font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; font-size: 12px; background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 1px 5px; color: var(--text); }
+  /* WORKFLOW CHANGE */
+  .workflow-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; margin: 20px 0; }
+  .workflow-box-title { font-size: 13px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 16px; }
+  .workflow-steps { display: flex; flex-direction: column; gap: 10px; }
+  .workflow-step { display: flex; gap: 14px; align-items: flex-start; }
+  .workflow-step-num { width: 24px; height: 24px; border-radius: 50%; background: var(--done-bg); border: 1px solid var(--done-border); color: #3fb950; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .workflow-step-num.planned { background: var(--planned-bg); border-color: var(--planned-border); color: #79c0ff; }
+  .workflow-step-content { flex: 1; }
+  .workflow-step-title { font-size: 13px; font-weight: 600; }
+  .workflow-step-desc { font-size: 12px; color: var(--muted); margin-top: 2px; }
 
-  @media (max-width: 900px) {
-    .lifecycle-flow { flex-direction: column; }
-    .flow-arrow { transform: rotate(90deg); }
-  }
-  @media (max-width: 700px) {
-    .hero { padding: 32px 20px; }
-    main { padding: 24px 20px; }
-    .phase-table-section, .lifecycle-section { padding: 0 20px; }
-    .hero-stats { gap: 24px; }
-    .timeline::before { left: 80px; }
-    .tl-label { width: 56px; }
-  }
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 48px 0; }
+
+  /* FOOTER */
+  footer { text-align: center; padding: 40px; color: var(--muted); font-size: 12px; border-top: 1px solid var(--border); margin-top: 80px; }
+
+  /* PHASE TABLE */
+  .phase-table-section { max-width: 1280px; margin: 48px auto 0; padding: 0 40px; }
+  .phase-table-title { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .phase-table-sub { color: var(--muted); font-size: 13px; margin-bottom: 24px; }
+  .phase-table { width: 100%; border-collapse: collapse; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+  .phase-table th { background: var(--surface2); color: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+  .phase-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 13px; vertical-align: top; }
+  .phase-table tr:last-child td { border-bottom: none; }
+  .phase-table tr:hover td { background: var(--surface2); }
+  .phase-cmd { font-family: "SFMono-Regular",Consolas,"Liberation Mono",Menlo,monospace; font-size: 12px; font-weight: 700; padding: 2px 8px; border-radius: 4px; white-space: nowrap; }
+  .phase-cmd.ba { background: var(--future-bg); color: #d2a8ff; border: 1px solid var(--future-border); }
+  .phase-cmd.gen { background: var(--done-bg); color: #3fb950; border: 1px solid var(--done-border); }
+  .phase-cmd.rev { background: var(--review-bg); color: #22d3ee; border: 1px solid var(--review-border); }
+  .phase-cmd.int { background: var(--integrate-bg); color: #f78166; border: 1px solid var(--integrate-border); }
+  .status-pill { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; border-radius: 20px; padding: 3px 10px; white-space: nowrap; }
+  .status-pill.live { background: var(--done-bg); color: #3fb950; border: 1px solid var(--done-border); }
+  .status-pill.indev { background: var(--inprogress-bg); color: #d29922; border: 1px solid var(--inprogress-border); }
+  .status-pill.planned { background: var(--planned-bg); color: #79c0ff; border: 1px solid var(--planned-border); }
+  .status-pill.future { background: var(--future-bg); color: #d2a8ff; border: 1px solid var(--future-border); }
+  .status-pill.int { background: var(--integrate-bg); color: #f78166; border: 1px solid var(--integrate-border); }
 </style>
 </head>
 <body>
 
 <!-- HERO -->
-<section class="hero">
+<header class="hero">
   <div class="hero-inner">
-    <div class="hero-badge">FlowForge v1.1.1 — Live</div>
-    <h1><span>FlowForge</span> Product Roadmap</h1>
-    <p class="sub">The AI-assisted full development lifecycle for the Sisu engineering team — from business discovery through spec capture, code generation, and automated code review. Three integrated phases: BA &amp; Requirements Pipeline (CIL-6148), Code Generation (PROD-13009), and Code Review (PROD-13861). Date: 20 Jul 2026.</p>
+    <div class="hero-badge">Live · Updated 2026-07-24</div>
+    <h1>FlowForge — <span>Product Roadmap</span></h1>
+    <p class="sub">AI-native code generation pipeline for the CIL/sisu insurance platform. From product discovery through integration onboarding — FlowForge automates the entire engineering lifecycle so developers ship faster and with higher consistency.</p>
     <div class="hero-stats">
-      <div class="stat">
-        <span class="stat-num green">43</span>
-        <span class="stat-label">Tasks Shipped</span>
+      <div class="stat"><span class="stat-num green">57</span><span class="stat-label">Tickets Shipped</span></div>
+      <div class="stat"><span class="stat-num yellow">3</span><span class="stat-label">In Progress / Review</span></div>
+      <div class="stat"><span class="stat-num blue">30</span><span class="stat-label">Planned / Backlog</span></div>
+      <div class="stat"><span class="stat-num purple">4</span><span class="stat-label">Active Epics</span></div>
+      <div class="stat"><span class="stat-num cyan">~60%</span><span class="stat-label">Overall Completion</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- STRATEGY -->
+<section class="strategy-bar">
+  <div class="strategy-inner">
+    <div class="strategy-title">Strategic Direction</div>
+    <p class="strategy-text">FlowForge transforms how simplesurance engineers build CIL integrations. The platform replaces weeks of hand-written boilerplate with an AI-guided workflow: from business requirements and discovery, through spec generation and code scaffolding, to automated code review and partner onboarding. Every phase eliminates a friction point — reducing lead time per integration from weeks to hours, making quality and compliance non-negotiable defaults rather than manual checklist items.</p>
+    <div class="strategy-pillars">
+      <div class="pillar">
+        <div class="pillar-icon">⚡</div>
+        <div class="pillar-title">Speed</div>
+        <div class="pillar-body">AI-generated stubs, specs, and PRs cut per-integration lead time by 80%+.</div>
       </div>
-      <div class="stat">
-        <span class="stat-num yellow">2</span>
-        <span class="stat-label">In Progress / Review</span>
+      <div class="pillar">
+        <div class="pillar-icon">🔒</div>
+        <div class="pillar-title">Consistency</div>
+        <div class="pillar-body">Every output is constitution-governed. No variance in auth, ACL, or rate-limiter patterns.</div>
       </div>
-      <div class="stat">
-        <span class="stat-num blue">12</span>
-        <span class="stat-label">Planned / To Do</span>
+      <div class="pillar">
+        <div class="pillar-icon">🔍</div>
+        <div class="pillar-title">Quality</div>
+        <div class="pillar-body">Automated code review agents enforce acceptance criteria before human eyes see the PR.</div>
       </div>
-      <div class="stat">
-        <span class="stat-num purple">5</span>
-        <span class="stat-label">BA Pipeline Active (CIL-6148)</span>
-      </div>
-      <div class="stat">
-        <span class="stat-num cyan">9</span>
-        <span class="stat-label">Code Review To Do (PROD-13861)</span>
+      <div class="pillar">
+        <div class="pillar-icon">🤝</div>
+        <div class="pillar-title">Empowerment</div>
+        <div class="pillar-body">BAs, POs, and integration managers drive delivery without deep Go expertise.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- VISION STATEMENT -->
-<div class="vision-bar">
-  <div class="vision-inner">
-    <div class="vision-icon">&#9889;</div>
-    <div>
-      <div class="vision-label">Product Vision</div>
-      <div class="vision-text">FlowForge is an AI-powered development lifecycle tool that takes a business requirement from discovery through specification, code generation, and automated code review — all within Claude Code. It replaces the manual steps at every phase: upstream BA research, spec authoring, plan review, code generation, and the solo pre-analysis step before peer review — so engineers spend their time on judgment, not mechanics. Three integrated phases cover the full journey: BA &amp; Requirements Pipeline (CIL-6148) closes the upstream 6–10h gap, Code Generation (PROD-13009) drives the build pipeline with 15+ agents, and Code Review (PROD-13861) automates the gated IIE pre-analysis so the first human touch is always peer review.</div>
-    </div>
-  </div>
-</div>
-
 <!-- LEGEND -->
 <div class="legend-bar">
   <div class="legend-bar-inner">
-    <span style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Status:</span>
-    <div class="legend-item"><div class="dot done"></div>Done / Shipped</div>
-    <div class="legend-item"><div class="dot inprog"></div>In Progress / In Code Review</div>
-    <div class="legend-item"><div class="dot planned"></div>To Do / Backlog (current epic)</div>
-    <div class="legend-item"><div class="dot future"></div>Future (BA upstream — CIL-6148)</div>
-    <div class="legend-item"><div class="dot review"></div>In Dev (Code Review — PROD-13861)</div>
+    <span style="font-size:11px;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.06em;">Legend</span>
+    <span class="legend-item"><span class="dot done"></span> Done / Shipped</span>
+    <span class="legend-item"><span class="dot review"></span> In Code Review</span>
+    <span class="legend-item"><span class="dot inprog"></span> In Progress</span>
+    <span class="legend-item"><span class="dot planned"></span> To Do / Planned</span>
+    <span class="legend-item"><span class="dot future"></span> Backlog</span>
+    <span class="legend-item"><span class="dot integrate"></span> /ff.integration (new)</span>
   </div>
 </div>
 
-<!-- ROADMAP PHASE TABLE -->
-<div class="phase-table-section">
-  <div class="phase-table-title">Roadmap at a Glance</div>
-  <div class="phase-table-sub">Every FlowForge command, its phase, status, and Jira home</div>
-  <table class="phase-table">
-    <thead>
-      <tr>
-        <th style="width:44px;">#</th>
-        <th style="width:220px;">Command</th>
-        <th>Description</th>
-        <th style="width:160px;">Status</th>
-        <th style="width:110px;">Jira</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!-- BA Phase -->
-      <tr>
-        <td><span class="phase-num">B1</span></td>
-        <td><code class="phase-cmd ba">/ff.start</code></td>
-        <td style="font-size:12px;color:var(--muted);">Git pre-flight — pulls main, checks for unmerged branches, creates feature branch, writes status.json</td>
-        <td><span class="status-pill future">&#128203; Planned</span></td>
-        <td><span class="jira-link">CIL-6171</span></td>
-      </tr>
-      <tr>
-        <td><span class="phase-num">B2</span></td>
-        <td><code class="phase-cmd ba">/ff.discover</code></td>
-        <td style="font-size:12px;color:var(--muted);">3-phase, 10-agent command — Problem Framing &rarr; Landscape Research &rarr; Solution Ideation; produces 0-discovery.md, 0-research.md, 0-options.md</td>
-        <td><span class="status-pill future">&#128203; Planned</span></td>
-        <td><span class="jira-link">CIL-6172&ndash;6174</span></td>
-      </tr>
-      <tr>
-        <td><span class="phase-num">B3</span></td>
-        <td><code class="phase-cmd ba">/ff.require</code></td>
-        <td style="font-size:12px;color:var(--muted);">Enhanced: 5 phases, 8-agent review panel, Decomposition Assessor (Phase 4 &rarr; 0-split-map.md), Agenda Builder (Phase 5 &rarr; 0-refine-agenda.md), Jira ticket creation</td>
-        <td><span class="status-pill future">&#128203; Planned (enhanced)</span></td>
-        <td><span class="jira-link">CIL-6175&ndash;6176</span></td>
-      </tr>
-      <tr>
-        <td><span class="phase-num">B4</span></td>
-        <td><code class="phase-cmd ba">/ff.refine</code></td>
-        <td style="font-size:12px;color:var(--muted);">Live meeting facilitation — loads agenda from /ff.require Phase 5, guided item-by-item loop, Spec Editor + Jira Sync with hierarchy enforcement</td>
-        <td><span class="status-pill future">&#128203; Planned</span></td>
-        <td><span class="jira-link">CIL-6177</span></td>
-      </tr>
-      <tr>
-        <td><span class="phase-num">B5</span></td>
-        <td><code class="phase-cmd ba">/ff.prd</code></td>
-        <td style="font-size:12px;color:var(--muted);">13-section living PRD published to Confluence; auto-updates when any engineering phase modifies 1-spec.md; persists confluence_url in status.json</td>
-        <td><span class="status-pill future">&#128203; Planned</span></td>
-        <td><span class="jira-link">CIL-6178</span></td>
-      </tr>
-      <!-- Code Generation Phase -->
-      <tr style="background: #0d1b0f10;">
-        <td><span class="phase-num">G1</span></td>
-        <td><code class="phase-cmd gen">/ff.plan</code></td>
-        <td style="font-size:12px;color:var(--muted);">6-agent plan review (5 specialists + Devil's Advocate); validates approach before code generation begins</td>
-        <td><span class="status-pill live">&#9989; Live</span></td>
-        <td><span class="jira-link">PROD-13009</span></td>
-      </tr>
-      <tr style="background: #0d1b0f10;">
-        <td><span class="phase-num">G2</span></td>
-        <td><code class="phase-cmd gen">/ff.build</code></td>
-        <td style="font-size:12px;color:var(--muted);">Code generation across Standard, Express, and Fast lanes; Java QA tests generated alongside Go code; related ticket context injected</td>
-        <td><span class="status-pill live">&#9989; Live</span></td>
-        <td><span class="jira-link">PROD-13009</span></td>
-      </tr>
-      <tr style="background: #0d1b0f10;">
-        <td><span class="phase-num">G3</span></td>
-        <td><code class="phase-cmd gen">/ff.verify</code></td>
-        <td style="font-size:12px;color:var(--muted);">4-verifier + Devil's Advocate compliance check — Architecture, Security, QA, Go Convention verifiers; blocks low-quality output before PR</td>
-        <td><span class="status-pill live">&#9989; Live</span></td>
-        <td><span class="jira-link">PROD-13009</span></td>
-      </tr>
-      <tr style="background: #0d1b0f10;">
-        <td><span class="phase-num">G4</span></td>
-        <td><code class="phase-cmd gen">/ff.fix</code></td>
-        <td style="font-size:12px;color:var(--muted);">Auto-fix loop and self-healing; resolves verify failures and re-runs verification; integrates with GitHub Actions CI post-back</td>
-        <td><span class="status-pill live">&#9989; Live</span></td>
-        <td><span class="jira-link">PROD-13009</span></td>
-      </tr>
-      <!-- Code Review Phase -->
-      <tr>
-        <td><span class="phase-num">R1</span></td>
-        <td><code class="phase-cmd rev">/ff.review</code></td>
-        <td style="font-size:12px;color:var(--muted);">Gated evidence-driven replacement for the solo human pre-analysis step — Orchestrator &rarr; Pre-review Hooks &rarr; IIE Agent &rarr; Policy Router &rarr; Artifact &rarr; Author Action Plan &rarr; Adjudicator &rarr; AC Traceability Gate &rarr; Metrics</td>
-        <td><span class="status-pill indev">&#128679; In Dev</span></td>
-        <td><span class="jira-link">PROD-13861</span></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<!-- FULL LIFECYCLE FLOW -->
-<div class="lifecycle-section">
-  <div class="lifecycle-title">Full Lifecycle Flow</div>
-  <div class="lifecycle-sub">How every FlowForge phase connects — from business need to merged PR</div>
+<!-- LIFECYCLE FLOW -->
+<section class="lifecycle-section">
+  <div class="lifecycle-title">Full Engineer + Partner Lifecycle</div>
+  <div class="lifecycle-sub">How FlowForge covers the entire pipeline — from business discovery to a live integration in production.</div>
   <div class="lifecycle-flow">
     <div class="flow-step">
       <div class="flow-box ba-phase">
-        <div class="flow-cmd ba-phase">Business Need</div>
-        <div class="flow-label">Stakeholder identifies a problem or opportunity</div>
+        <span class="flow-cmd ba-phase">/ff.discover</span>
+        <span class="flow-label">BA/PO explores<br>capability scope</span>
       </div>
     </div>
-    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-arrow">→</div>
     <div class="flow-step">
       <div class="flow-box ba-phase">
-        <div class="flow-cmd ba-phase">/ff.start</div>
-        <div class="flow-label">Git pre-flight &amp; status.json init</div>
+        <span class="flow-cmd ba-phase">/ff.prd</span>
+        <span class="flow-label">AI-generated<br>PRD document</span>
       </div>
     </div>
-    <div class="flow-arrow">&rarr;</div>
-    <div class="flow-step">
-      <div class="flow-box ba-phase">
-        <div class="flow-cmd ba-phase">/ff.discover</div>
-        <div class="flow-label">3 phases, 10 agents, 3 artifacts</div>
-      </div>
-    </div>
-    <div class="flow-arrow">&rarr;</div>
-    <div class="flow-step">
-      <div class="flow-box ba-phase">
-        <div class="flow-cmd ba-phase">/ff.require</div>
-        <div class="flow-label">5 phases, 8-agent panel, Jira tickets</div>
-      </div>
-    </div>
-    <div class="flow-arrow">&rarr;</div>
-    <div class="flow-step">
-      <div class="flow-box ba-phase">
-        <div class="flow-cmd ba-phase">/ff.refine</div>
-        <div class="flow-label">Live facilitation, Spec Editor</div>
-      </div>
-    </div>
-    <div class="flow-arrow">&rarr;</div>
-    <div class="flow-step">
-      <div class="flow-box ba-phase">
-        <div class="flow-cmd ba-phase">/ff.prd</div>
-        <div class="flow-label">13-section PRD &rarr; Confluence</div>
-      </div>
-    </div>
-    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-arrow">→</div>
     <div class="flow-step">
       <div class="flow-box gen-phase">
-        <div class="flow-cmd gen-phase">/ff.plan + /ff.build</div>
-        <div class="flow-label">6-agent plan review, code gen, Java QA tests</div>
+        <span class="flow-cmd gen-phase">/flowforge.start</span>
+        <span class="flow-label">Spec, tasks,<br>and branch</span>
       </div>
     </div>
-    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-arrow">→</div>
     <div class="flow-step">
       <div class="flow-box gen-phase">
-        <div class="flow-cmd gen-phase">/ff.verify + /ff.fix</div>
-        <div class="flow-label">4-verifier compliance, auto-fix loop</div>
+        <span class="flow-cmd gen-phase">/flowforge</span>
+        <span class="flow-label">Code generation<br>per task</span>
       </div>
     </div>
-    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-box gen-phase">
+        <span class="flow-cmd gen-phase">/flowforge.pr</span>
+        <span class="flow-label">PR creation<br>with tests</span>
+      </div>
+    </div>
+    <div class="flow-arrow">→</div>
     <div class="flow-step">
       <div class="flow-box rev-phase">
-        <div class="flow-cmd rev-phase">/ff.review</div>
-        <div class="flow-label">IIE agent, policy router, AC gate, artifact</div>
+        <span class="flow-cmd rev-phase">/flowforge.review</span>
+        <span class="flow-label">AI code review<br>multi-agent</span>
       </div>
     </div>
-    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-arrow">→</div>
     <div class="flow-step">
       <div class="flow-box human-phase">
-        <div class="flow-cmd human-phase">Peer Review</div>
-        <div class="flow-label">First human touch is 2-approver review, not solo pre-analysis</div>
+        <span class="flow-cmd human-phase">Human Review</span>
+        <span class="flow-label">2 approvals<br>+ merge</span>
       </div>
     </div>
-    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-arrow">→</div>
     <div class="flow-step">
-      <div class="flow-box gen-phase">
-        <div class="flow-cmd gen-phase">Merge &amp; CI</div>
-        <div class="flow-label">GitHub Actions, Jira post-back, Prometheus telemetry</div>
+      <div class="flow-box int-phase">
+        <span class="flow-cmd int-phase">/ff.integration</span>
+        <span class="flow-label">Partner onboarding<br>artifact gen</span>
       </div>
     </div>
   </div>
-</div>
+</section>
+
+<!-- EPIC OVERVIEW TABLE -->
+<section class="phase-table-section">
+  <div class="phase-table-title">Epic Overview</div>
+  <div class="phase-table-sub">Four epics covering the full FlowForge lifecycle — from AI code generation through partner integration onboarding.</div>
+  <table class="phase-table">
+    <thead>
+      <tr>
+        <th>Epic</th>
+        <th>Command / Scope</th>
+        <th>Status</th>
+        <th>Progress</th>
+        <th>Personas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>PROD-13009</strong><br><span style="color:var(--muted);font-size:12px;">AI Rollout: FlowForge (Code Generation)</span></td>
+        <td><span class="phase-cmd gen">/flowforge.start · /flowforge · /flowforge.pr</span></td>
+        <td><span class="status-pill live">● Live</span></td>
+        <td style="min-width:160px;">
+          <div style="background:var(--surface2);border-radius:6px;height:8px;overflow:hidden;">
+            <div style="width:75%;height:100%;background:var(--done-border);"></div>
+          </div>
+          <span style="font-size:11px;color:var(--muted);">~75% complete</span>
+        </td>
+        <td style="font-size:12px;color:var(--muted);">Engineers · Tech Leads</td>
+      </tr>
+      <tr>
+        <td><strong>PROD-13861</strong><br><span style="color:var(--muted);font-size:12px;">Code Review (/flowforge.review)</span></td>
+        <td><span class="phase-cmd rev">/flowforge.review</span></td>
+        <td><span class="status-pill planned">◦ Planned</span></td>
+        <td style="min-width:160px;">
+          <div style="background:var(--surface2);border-radius:6px;height:8px;overflow:hidden;">
+            <div style="width:0%;height:100%;background:var(--planned-border);"></div>
+          </div>
+          <span style="font-size:11px;color:var(--muted);">0% — 9 tasks To Do</span>
+        </td>
+        <td style="font-size:12px;color:var(--muted);">Engineers · Code Reviewers</td>
+      </tr>
+      <tr>
+        <td><strong>CIL-6148</strong><br><span style="color:var(--muted);font-size:12px;">BA/PO Upstream Pipeline</span></td>
+        <td><span class="phase-cmd ba">/ff.discover · /ff.prd · /ff.refine</span></td>
+        <td><span class="status-pill indev">◑ In Dev</span></td>
+        <td style="min-width:160px;">
+          <div style="background:var(--surface2);border-radius:6px;height:8px;overflow:hidden;">
+            <div style="width:17%;height:100%;background:var(--review-border);display:inline-block;"></div>
+          </div>
+          <span style="font-size:11px;color:var(--muted);">1/6 in review</span>
+        </td>
+        <td style="font-size:12px;color:var(--muted);">BAs · POs · Product Managers</td>
+      </tr>
+      <tr>
+        <td><strong>PROD-13946</strong><br><span style="color:var(--muted);font-size:12px;">/flowforge.integration</span></td>
+        <td><span class="phase-cmd int">/flowforge.integration · /ff.integration.status</span></td>
+        <td><span class="status-pill future">◉ Upcoming</span></td>
+        <td style="min-width:160px;">
+          <div style="background:var(--surface2);border-radius:6px;height:8px;overflow:hidden;">
+            <div style="width:0%;height:100%;background:var(--integrate-border);"></div>
+          </div>
+          <span style="font-size:11px;color:var(--muted);">0% — 8 tasks To Do</span>
+        </td>
+        <td style="font-size:12px;color:var(--muted);">Integration Managers · Partners</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
 
 <!-- MAIN CONTENT -->
 <main>
 
-  <!-- ═══════════════════════════════════════════════
-       PHASE 1: BA & REQUIREMENTS PIPELINE
-  ════════════════════════════════════════════════ -->
-  <div class="section-header" style="margin-top:0;">
-    <div class="section-dot future-dot"></div>
-    <span class="phase-label-tag ba">Phase 1</span>
-    <h2>BA &amp; Requirements Pipeline</h2>
-    <span class="section-desc">CIL-6148 — 5 active tasks (3 consolidated, 1 in review)</span>
-  </div>
+<!-- EPIC 1: PROD-13009 -->
+<div class="section-header">
+  <div class="section-dot done"></div>
+  <h2>PROD-13009 — AI Rollout: FlowForge (Code Generation)</h2>
+  <span class="section-desc" style="color:var(--ff-green);">● Live · ~75% Complete</span>
+</div>
 
-  <div class="epic-section">
-    <div class="epic-header future-card">
-      <div class="epic-icon future">&#11014;</div>
-      <div class="epic-info">
-        <h3>CIL-6148 — FlowForge BA/PO Upstream Pipeline</h3>
-        <p>Closes the 6&ndash;10h upstream gap that exists before spec capture. Today FlowForge accelerates the dev pipeline with 15 agents, but the BA phase has only 3 agents in <code>/ff.require</code> — all firing after the spec is written. This epic adds 5 commands covering problem framing, landscape research, solution ideation, decomposition, live refinement facilitation, and living PRD publishing. Target: &minus;45% BA time per feature, &minus;33% total cycle time.</p>
-        <div class="epic-badge-row">
-          <span class="pill highlight-future">5 active tasks</span>
-          <span class="pill">Status: To Do (Epic)</span>
-          <span class="pill">Priority: Minor</span>
-          <span class="pill">Unassigned</span>
-        </div>
+<div class="epic-header gen">
+  <div class="epic-header-top">
+    <div class="epic-icon gen">⚙️</div>
+    <div class="epic-info">
+      <div class="epic-key">PROD-13009</div>
+      <h3>AI-Assisted Code Generation for CIL Integrations</h3>
+      <p>The foundational epic that delivers end-to-end AI code generation for the sisu platform. FlowForge takes a feature spec and produces production-ready Go handlers, database migrations, protobuf contracts, access control rules, tests, and a pull request — all governed by the FlowForge constitution to ensure architectural consistency across every integration.</p>
+      <div class="epic-badge-row" style="margin-top:12px;">
+        <span class="pill gen">● Shipped: 57 tickets</span>
+        <span class="pill" style="background:var(--review-bg);border-color:var(--review-border);color:#22d3ee;">◑ In Review: 2</span>
+        <span class="pill" style="background:var(--inprogress-bg);border-color:var(--inprogress-border);color:#d29922;">◕ In Progress: 1</span>
+        <span class="pill">◦ To Do: 4</span>
+        <span class="pill">⋯ Backlog: 10</span>
       </div>
     </div>
+  </div>
+</div>
 
+<div style="margin-bottom:24px;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;">Personas Impacted</div>
+  <div class="persona-row">
+    <div class="persona-chip primary"><div class="persona-avatar">👨‍💻</div><div><div class="persona-name">Software Engineers</div><div class="persona-role">Primary users — write specs, trigger generation, review PRs</div></div></div>
+    <div class="persona-chip primary"><div class="persona-avatar">🔬</div><div><div class="persona-name">Tech Leads / Architects</div><div class="persona-role">Define standards, review generated architecture patterns</div></div></div>
+    <div class="persona-chip"><div class="persona-avatar">🧪</div><div><div class="persona-name">QA Engineers</div><div class="persona-role">Validate generated test scaffolding and integration coverage</div></div></div>
+  </div>
+</div>
+
+<div class="progress-section">
+  <div class="progress-title">Delivery Progress</div>
+  <div class="progress-sub">57 shipped · 3 in review/progress · 14 remaining (4 To Do + 10 Backlog)</div>
+  <div class="progress-bar-track">
+    <div class="progress-fill done" style="width:75%;"></div>
+    <div class="progress-fill review-fill" style="width:4%;"></div>
+    <div class="progress-fill planned" style="width:5%;"></div>
+    <div class="progress-fill future-fill" style="width:13%;"></div>
+  </div>
+  <div class="progress-legend">
+    <span class="prog-legend-item"><span class="prog-dot" style="background:var(--done-border);"></span> Done (57)</span>
+    <span class="prog-legend-item"><span class="prog-dot" style="background:var(--review-border);"></span> In Review (2)</span>
+    <span class="prog-legend-item"><span class="prog-dot" style="background:var(--inprogress-border);"></span> In Progress (1)</span>
+    <span class="prog-legend-item"><span class="prog-dot" style="background:var(--planned-border);"></span> To Do (4)</span>
+    <span class="prog-legend-item"><span class="prog-dot" style="background:var(--future-border);"></span> Backlog (10)</span>
+  </div>
+</div>
+
+<div class="workflow-box">
+  <div class="workflow-box-title">How This Changes the Developer Workflow</div>
+  <div class="workflow-steps">
+    <div class="workflow-step"><div class="workflow-step-num">1</div><div class="workflow-step-content"><div class="workflow-step-title">Write a spec once</div><div class="workflow-step-desc">A single Markdown spec in <code>specs/</code> defines the feature. FlowForge reads it to understand tasks, contracts, and acceptance criteria.</div></div></div>
+    <div class="workflow-step"><div class="workflow-step-num">2</div><div class="workflow-step-content"><div class="workflow-step-title">Run /flowforge.start</div><div class="workflow-step-desc">Generates task breakdown tickets in Jira, creates the feature branch, and caches shared context once — so per-task agents don't re-read the repo.</div></div></div>
+    <div class="workflow-step"><div class="workflow-step-num">3</div><div class="workflow-step-content"><div class="workflow-step-title">Iterate with /flowforge per task</div><div class="workflow-step-desc">Each CIL task generates its code artefacts: handler, service, repository, tests, proto changes, and ACL stanzas. Constitution-governed — no off-spec outputs.</div></div></div>
+    <div class="workflow-step"><div class="workflow-step-num">4</div><div class="workflow-step-content"><div class="workflow-step-title">Open PR with /flowforge.pr</div><div class="workflow-step-desc">Creates a fully formatted GitHub PR with description, test commands, coverage notes, and linked Jira tickets — no copy-pasting required.</div></div></div>
+    <div class="workflow-step"><div class="workflow-step-num planned">5</div><div class="workflow-step-content"><div class="workflow-step-title">CI tests + Windows parity (coming)</div><div class="workflow-step-desc">Proper GitHub Actions CI tests and full Windows-first parity so engineers on all platforms get identical FlowForge behaviour.</div></div></div>
+  </div>
+</div>
+
+<div style="margin-bottom:24px;">
+  <div style="font-size:16px;font-weight:700;color:var(--ff-green);margin-bottom:18px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">✅</span> What Has Been Delivered</div>
+
+  <div class="cluster">
+    <div class="cluster-header"><span class="cluster-icon">🏗️</span><span class="cluster-title">Core Generation Engine &amp; CLI Infrastructure</span><span class="cluster-count">~12 tickets</span></div>
+    <div class="capability-box"><div class="capability-label done">Capability Gained</div><div class="capability-title">End-to-end FlowForge CLI with context caching</div><div class="capability-desc">The foundational build-your-own-agent scaffolding: Claude Code integration, CLAUDE.md-aware context loading, constitution and spec parsing, and a build-stage cache anchor that pre-loads shared repo context once per feature run — eliminating repeated large file reads across task agents.</div></div>
     <div class="ticket-grid">
-      <div class="ticket-card inprog">
-        <div class="ticket-top">
-          <span class="ticket-key">CIL-6171 &middot; T001</span>
-          <span class="badge inprog">In Code Review</span>
-        </div>
-        <div class="ticket-title">Patch /ff.start — create status.json on first run</div>
-        <div class="ticket-desc">Initialises status.json schema (start_confirmed, start_branch, jira_key, jira_sub_keys, confluence_url, phase, last_updated). Eliminates silent failures for non-technical BAs.</div>
-        <div class="ticket-meta">
-          <span class="ticket-type">Task</span>
-          <span class="ticket-assignee">João Duarte</span>
-        </div>
-      </div>
-      <div class="ticket-card future-card">
-        <div class="ticket-top">
-          <span class="ticket-key">CIL-6172 &middot; T002</span>
-          <span class="badge future-badge">Backlog</span>
-        </div>
-        <div class="ticket-title">Author /ff.discover — problem framing interview (Phase 1)</div>
-        <div class="ticket-desc">4 agents sequential: Problem Analyst, Stakeholder Mapper, Constraint Identifier, Framing Synthesiser. Produces 0-discovery.md.</div>
-        <div class="ticket-meta">
-          <span class="ticket-type">Task</span>
-          <span class="ticket-assignee">Sascha Mehlhase</span>
-        </div>
-      </div>
-  </div>
-
-  <hr class="section-divider">
-
-  <!-- ═══════════════════════════════════════════════
-       PHASE 2: CODE GENERATION
-  ════════════════════════════════════════════════ -->
-  <div class="section-header">
-    <div class="section-dot done"></div>
-    <span class="phase-label-tag gen">Phase 2</span>
-    <h2>Code Generation Pipeline</h2>
-    <span class="section-desc">PROD-13009 — 43 shipped &middot; 1 in progress &middot; 12 planned</span>
-  </div>
-
-  <!-- Progress Bar -->
-  <div class="progress-section">
-    <div class="progress-title">PROD-13009 — FlowForge Build Epic Progress</div>
-    <div class="progress-sub">Core dev pipeline delivery — 56 tracked tickets</div>
-    <div class="progress-bar-track">
-      <div class="progress-fill done" style="width: 76.8%"></div>
-      <div class="progress-fill inprog" style="width: 1.8%"></div>
-      <div class="progress-fill planned" style="width: 21.4%"></div>
-    </div>
-    <div class="progress-legend">
-      <div class="prog-leg-item"><div class="dot done"></div>43 Done / Closed (76.8%)</div>
-      <div class="prog-leg-item"><div class="dot inprog"></div>1 In Progress (1.8%)</div>
-      <div class="prog-leg-item"><div class="dot planned"></div>12 Planned / To Do (21.4%)</div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-4949</span><span class="badge done">Done</span></div><div class="ticket-title">Initial FlowForge scaffolding &amp; CLI entry point</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5182–5187</span><span class="badge done">Done</span></div><div class="ticket-title">Core generation engine — spec parsing, task routing, output validation</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5207–5208</span><span class="badge done">Done</span></div><div class="ticket-title">Constitution enforcement layer &amp; scope boundary checks</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6394</span><span class="badge done">Done</span></div><div class="ticket-title">Cache-anchor shared context in build step to reduce per-agent read overhead</div></div>
     </div>
   </div>
 
-  <div class="info-grid">
-    <div class="info-box gen">
-      <div class="info-box-title gen">What's Live Today</div>
-      <ul class="cap-list gen">
-        <li>Lane system: Standard, Express, Fast lane orchestrators</li>
-        <li>Interactive spec capture + Gap Reviewer, Self-Review, QA Author agents</li>
-        <li>6-agent plan review (5 specialists + Devil's Advocate)</li>
-        <li>4-verifier + Devil's Advocate compliance check</li>
-        <li>Auto-fix loop and self-healing via /ff.fix</li>
-        <li>Java QA automation tests generated alongside Go code</li>
-        <li>Ticket quality gate — blocks low-quality specs before generation</li>
-        <li>Stale-context guard &amp; branch rebasing</li>
-        <li>Claude cost tracking pushed to Prometheus</li>
-        <li>GitHub Actions CI integration + Jira post-back on failure</li>
-        <li>Automated code review via Claude Code on every PR</li>
-        <li>Related Jira tickets and branches injected as generation context</li>
-        <li>Enforced git branch naming template</li>
-      </ul>
-    </div>
-    <div class="info-box gen" style="border-top-color: var(--planned-border);">
-      <div class="info-box-title" style="color:#79c0ff;">Planned — Phase 6</div>
-      <ul class="cap-list" style="list-style:none;">
-        <li style="display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5;color:var(--text);"><span style="color:#79c0ff;flex-shrink:0;margin-top:1px;">&rarr;</span>PR Review — interact with comments (CIL-5899)</li>
-        <li style="display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5;color:var(--text);"><span style="color:#79c0ff;flex-shrink:0;margin-top:1px;">&rarr;</span>In-tool feedback prompt at branch push (CIL-5994)</li>
-        <li style="display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5;color:var(--text);"><span style="color:#79c0ff;flex-shrink:0;margin-top:1px;">&rarr;</span>Confluence file/image attachment support (CIL-5995)</li>
-        <li style="display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5;color:var(--text);"><span style="color:#79c0ff;flex-shrink:0;margin-top:1px;">&rarr;</span>Eval suite for quality regression detection (CIL-6004)</li>
-        <li style="display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5;color:var(--text);"><span style="color:#79c0ff;flex-shrink:0;margin-top:1px;">&rarr;</span>Claude Sonnet 5 upgrade (CIL-6244)</li>
-        <li style="display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5;color:var(--text);"><span style="color:#79c0ff;flex-shrink:0;margin-top:1px;">&rarr;</span>Windows installation guide (CIL-5545)</li>
-        <li style="display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5;color:var(--text);"><span style="color:#79c0ff;flex-shrink:0;margin-top:1px;">&rarr;</span>Version awareness in-project (CIL-6245)</li>
-        <li style="display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5;color:var(--text);"><span style="color:#79c0ff;flex-shrink:0;margin-top:1px;">&rarr;</span>Session telemetry for /ff.require (CIL-5989)</li>
-        <li style="display:flex;align-items:flex-start;gap:8px;font-size:12px;line-height:1.5;color:var(--text);"><span style="color:#79c0ff;flex-shrink:0;margin-top:1px;">&rarr;</span>GitHub Actions CI test suite (CIL-6200)</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- In Progress tickets -->
-  <div class="section-header" style="margin-top:32px;">
-    <div class="section-dot inprog"></div>
-    <h2>In Progress</h2>
-    <span class="section-desc">1 ticket — CI tests</span>
-  </div>
-  <div class="ticket-grid">
-    <div class="ticket-card inprog">
-      <div class="ticket-top"><span class="ticket-key">CIL-6200</span><span class="badge inprog">In Progress</span></div>
-      <div class="ticket-title">Add proper CI tests for Github Actions</div>
-      <div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div>
-    </div>
-  </div>
-
-  <hr class="section-divider">
-
-  <!-- ═══════════════════════════════════════════════
-       PHASE 3: CODE REVIEW — /flowforge.review
-  ════════════════════════════════════════════════ -->
-  <div class="section-header">
-    <div class="section-dot review-dot"></div>
-    <span class="phase-label-tag rev">Phase 3</span>
-    <h2>Code Review — /flowforge.review</h2>
-    <span class="section-desc">PROD-13861 — 9 tasks, all To Do</span>
-  </div>
-
-  <div class="epic-section">
-    <div class="epic-header review-card">
-      <div class="epic-icon review">&#128269;</div>
-      <div class="epic-info">
-        <h3>PROD-13861 — Replace Human Code Analysis Step with Automated IIE Pipeline</h3>
-        <p>Today's pipeline ends its automated phase at <code>/ff.verify</code>. After that, a solo engineer reads the diff, assesses correctness, spots architectural issues, and writes up findings before peer review starts. This preparatory analysis step is largely mechanical — spec alignment, Go anti-patterns, security/GDPR surface, testability — and takes significant time per feature. <code>/flowforge.review</code> is extended in-place into a <strong>gated, evidence-driven replacement</strong> for this solo human pre-analysis step, so that the first human touch in the review cycle is peer code review, not solo pre-analysis by one engineer. The 2-approver peer review is not eliminated — only the preparatory solo analysis phase is automated.</p>
-        <div class="epic-badge-row">
-          <span class="pill highlight-review">9 tasks — all To Do</span>
-          <span class="pill">Status: To Do (Epic)</span>
-          <span class="pill">Priority: Minor</span>
-          <span class="pill">Unassigned</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Architecture Diagram -->
-    <div class="arch-diagram">
-      <div class="arch-title">Review Pipeline Architecture</div>
-      <div class="arch-flow">
-        <div class="arch-node auto">/ff.verify completes</div>
-        <div class="arch-arrow">&rarr;</div>
-        <div class="arch-node auto">Orchestrator &amp; State Machine (T1)</div>
-        <div class="arch-arrow">&rarr;</div>
-        <div class="arch-node auto">Pre-review Hooks (T2)<br><span style="font-size:10px;color:var(--muted);">9 deterministic tools</span></div>
-        <div class="arch-arrow">&rarr;</div>
-        <div class="arch-node auto">IIE Agent (T3)<br><span style="font-size:10px;color:var(--muted);">Isolated, read-only, adversarial</span></div>
-        <div class="arch-arrow">&rarr;</div>
-        <div class="arch-node auto">Policy Router (T4)<br><span style="font-size:10px;color:var(--muted);">auto-fix / escalate / record</span></div>
-        <div class="arch-arrow">&rarr;</div>
-        <div class="arch-node auto">Artifact + PR + Jira (T5)</div>
-      </div>
-      <div class="arch-flow" style="margin-top:10px;">
-        <div class="arch-node human">Author Action Plan (T6)<br><span style="font-size:10px;color:#a07020;">Human gate</span></div>
-        <div class="arch-arrow">&rarr;</div>
-        <div class="arch-node human">Adjudicator (T7)<br><span style="font-size:10px;color:#a07020;">Disputed findings only</span></div>
-        <div class="arch-arrow">&rarr;</div>
-        <div class="arch-node auto">AC Traceability Gate (T8)<br><span style="font-size:10px;color:var(--muted);">12-field schema + 3 gate conditions</span></div>
-        <div class="arch-arrow">&rarr;</div>
-        <div class="arch-node auto">Success Metrics (T9)<br><span style="font-size:10px;color:var(--muted);">False-positive tracking</span></div>
-        <div class="arch-arrow">&rarr;</div>
-        <div class="arch-node human">Peer Code Review<br><span style="font-size:10px;color:#a07020;">2-approver review starts here</span></div>
-      </div>
-      <div class="arch-desc" style="margin-top:20px;">
-        <div class="arch-item">
-          <div class="arch-item-title">IIE Isolation</div>
-          <div class="arch-item-body">The Independent Implementation Examiner runs in a named non-fork subagent with an isolated context window. It cannot see builder conclusions, cannot run tools, and is structurally prevented from self-assessment contamination.</div>
-        </div>
-        <div class="arch-item">
-          <div class="arch-item-title">Circuit Breaker</div>
-          <div class="arch-item-body">Maximum 2 automated fix-and-re-review cycles. On cycle 2 with remaining critical/high findings the orchestrator emits ESCALATE and REQUEST_MANUAL_FIX — the loop does not continue.</div>
-        </div>
-        <div class="arch-item">
-          <div class="arch-item-title">Gate Conditions</div>
-          <div class="arch-item-body">PASS verdict requires all three simultaneously: (a) zero critical findings, (b) zero undismissed high findings, (c) 100% AC traceability. Passing tests alone do not satisfy these conditions.</div>
-        </div>
-        <div class="arch-item">
-          <div class="arch-item-title">Policy Routing</div>
-          <div class="arch-item-body">Each finding is mapped to exactly one action by severity &times; confidence. Architecture, GDPR, and scope findings always escalate regardless of severity. Medium findings that auto-fix are flagged requires_human_confirmation for peer reviewers.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Review Task Cards -->
+  <div class="cluster">
+    <div class="cluster-header"><span class="cluster-icon">📐</span><span class="cluster-title">Spec &amp; Contract Generation (Proto / OpenAPI)</span><span class="cluster-count">~10 tickets</span></div>
+    <div class="capability-box"><div class="capability-label done">Capability Gained</div><div class="capability-title">AI-generated protobuf and OpenAPI contracts from natural language</div><div class="capability-desc">FlowForge reads a feature spec and generates source-of-truth contract files in <code>protos/src/</code> and <code>schemas/openapi/src/</code>. Generated contracts feed downstream Go code generation — ensuring handler signatures match declared contracts without manual alignment.</div></div>
     <div class="ticket-grid">
-      <div class="ticket-card planned">
-        <div class="ticket-top">
-          <span class="ticket-key">CIL-6409 &middot; T1</span>
-          <span class="badge planned">To Do</span>
-        </div>
-        <div class="ticket-title">Orchestrator &amp; State Machine</div>
-        <div class="ticket-desc">SHA pinning (candidate + baseline), clean git worktree, agent sequencing, circuit breaker (max 2 fix cycles), status.json as sole writer of all review.* fields. Every other task (T2&ndash;T9) plugs into this orchestrator.</div>
-        <div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Unassigned</span></div>
-      </div>
-      <div class="ticket-card planned">
-        <div class="ticket-top">
-          <span class="ticket-key">CIL-6410 &middot; T2</span>
-          <span class="badge planned">To Do</span>
-        </div>
-        <div class="ticket-title">Pre-review Hooks &amp; Deterministic Tooling</div>
-        <div class="ticket-desc">Creates <code>.claude/hooks/pre-review.sh</code> — runs all 9 deterministic tools (compiler, tests, linter, type checker, vuln scan, secret scan, static security, coverage comparison, API/schema compat) before the IIE starts. Writes tool-results.json. IIE is read-only on tool execution.</div>
-        <div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Unassigned</span></div>
-      </div>
-      <div class="ticket-card planned">
-        <div class="ticket-top">
-          <span class="ticket-key">CIL-6411 &middot; T3</span>
-          <span class="badge planned">To Do</span>
-        </div>
-        <div class="ticket-title">IIE Agent — Isolation, Mandate &amp; Behavioral Spec</div>
-        <div class="ticket-desc">Authors <code>.claude/agents/independent-implementation-reviewer.md</code>. Three non-negotiable mandate elements: (a) independence — never accepts prior agent conclusions, (b) falsification orientation — attempts to disprove readiness, (c) read-only — no file writes, no tool execution. Each finding requires all 12 fields (AC-004-3 schema).</div>
-        <div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Unassigned</span></div>
-      </div>
-      <div class="ticket-card planned">
-        <div class="ticket-top">
-          <span class="ticket-key">CIL-6412 &middot; T4</span>
-          <span class="badge planned">To Do</span>
-        </div>
-        <div class="ticket-title">Policy Routing Engine &amp; Controlled Fix Loop</div>
-        <div class="ticket-desc">Maps each IIE finding to exactly one action (auto-fix / escalate / record-only) using the severity &times; confidence table. Drives the fix loop up to cycle 2 limit. Writes authoritative review.verdict and review.gateRecommendation to status.json independently of the IIE's advisory proposed verdict.</div>
-        <div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Unassigned</span></div>
-      </div>
-      <div class="ticket-card planned">
-        <div class="ticket-top">
-          <span class="ticket-key">CIL-6413 &middot; T5</span>
-          <span class="badge planned">To Do</span>
-        </div>
-        <div class="ticket-title">Artifact Structure, PR Comment &amp; Jira Posting</div>
-        <div class="ticket-desc">Writes specs/&lt;feature-id&gt;/review-report.md. Posts to PR comment (update-in-place on re-run). Generates ## Review Focus orientation header (max 5 bullets, change risk tier). On PASS verdict with no open PR: prompts to create PR with title from spec frontmatter, linked Jira ticket, and Review Summary.</div>
-        <div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Unassigned</span></div>
-      </div>
-      <div class="ticket-card planned">
-        <div class="ticket-top">
-          <span class="ticket-key">CIL-6414 &middot; T6</span>
-          <span class="badge planned">To Do</span>
-        </div>
-        <div class="ticket-title">Author Action Plan, Override Mechanism &amp; Escalation Decision Packet</div>
-        <div class="ticket-desc">On FIX_REQUIRED or ESCALATE verdict: Author Action Plan sequences work by fix-dependency then severity. Escalation Decision Packet groups findings by decision type with options + effort + blocks-PR-open flag. Override justifications (Reason: + Author: lines) let authors record exceptions without deleting findings.</div>
-        <div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Unassigned</span></div>
-      </div>
-      <div class="ticket-card planned">
-        <div class="ticket-top">
-          <span class="ticket-key">CIL-6415 &middot; T7</span>
-          <span class="badge planned">To Do</span>
-        </div>
-        <div class="ticket-title">Adjudicator Agent for Disputed Findings</div>
-        <div class="ticket-desc">On-demand at the human gate only — invoked when the author explicitly contests a finding with counter-evidence. Returns one of: CONFIRMED, REJECTED, PARTIALLY_VALID, REQUIRES_HUMAN_JUDGMENT. The automated fix loop never restarts after adjudication.</div>
-        <div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Unassigned</span></div>
-      </div>
-      <div class="ticket-card planned">
-        <div class="ticket-top">
-          <span class="ticket-key">CIL-6417 &middot; T8</span>
-          <span class="badge planned">To Do</span>
-        </div>
-        <div class="ticket-title">AC Traceability Gate, Finding Schema Enforcement &amp; Spec Alignment</div>
-        <div class="ticket-desc">Validates all 12 finding fields before routing. PASS verdict requires all three gate conditions simultaneously — passing tests alone do not satisfy the gate. When spec has zero ACs, gate condition (c) is marked unverifiable (not passed). Missing spec labels all findings [no-spec].</div>
-        <div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Unassigned</span></div>
-      </div>
-      <div class="ticket-card planned">
-        <div class="ticket-top">
-          <span class="ticket-key">CIL-6418 &middot; T9</span>
-          <span class="badge planned">To Do</span>
-        </div>
-        <div class="ticket-title">Success Metrics Capture &amp; False-Positive Rate Tracking</div>
-        <div class="ticket-desc">In-PR checkbox row per finding: [ ] False positive / [ ] Verified real. On merge, reads checkbox states and writes to feedback.json; updates rolling 20-PR window in specs/.review-metrics.json. Alerts when false-positive rate exceeds 30% with &ge;5 reviewed findings.</div>
-        <div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Unassigned</span></div>
-      </div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5247–5252</span><span class="badge done">Done</span></div><div class="ticket-title">Protobuf contract generation from spec acceptance criteria</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5268 · CIL-5271–5272</span><span class="badge done">Done</span></div><div class="ticket-title">OpenAPI schema output &amp; regeneration workflow integration</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5301 · CIL-5373</span><span class="badge done">Done</span></div><div class="ticket-title">Contract validation &amp; cross-language consistency checks</div></div>
     </div>
   </div>
 
-  <hr class="section-divider">
-
-  <!-- ═══════════════════════════════════════════════
-       DELIVERY TIMELINE
-  ════════════════════════════════════════════════ -->
-  <div class="timeline-section">
-    <div class="timeline-title">Delivery Timeline Overview</div>
-    <div class="timeline">
-      <div class="tl-row">
-        <div class="tl-label">Phase 1&ndash;4<br>Foundation</div>
-        <div class="tl-dot-wrap"><div class="tl-dot done"></div></div>
-        <div class="tl-content">
-          <h4>Core Pipeline — Shipped</h4>
-          <p>Lane foundation, pipeline lane-awareness, Express/Fast orchestrators, QA artifacts, Jira integration, CI mode, installation guides, QA integration, CI stability, scope decoupling, Prometheus telemetry, gate fixes, branch management.</p>
-          <div class="tl-chips">
-            <span class="tl-chip">CIL-4949</span><span class="tl-chip">CIL-5182&ndash;5187</span><span class="tl-chip">CIL-5207&ndash;5252</span><span class="tl-chip">CIL-5268&ndash;5554</span><span class="tl-chip">CIL-5619&ndash;5784</span><span class="tl-chip">CIL-5855&ndash;6139</span>
-          </div>
-        </div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-label">Phase 5<br>Active</div>
-        <div class="tl-dot-wrap"><div class="tl-dot inprog"></div></div>
-        <div class="tl-content">
-          <h4>CI &amp; Branch Stability — Mostly Done</h4>
-          <p>Exclude protobuf/openAPI from guardrail ✓, read ticket ID from branch name ✓. GitHub Actions CI tests still in progress.</p>
-          <div class="tl-chips">
-            <span class="tl-chip" style="border-color:var(--inprogress-border);color:#d29922;">CIL-6200</span>
-            <span class="tl-chip" style="border-color:var(--done-border);color:#3fb950;">CIL-6257 ✓</span>
-            <span class="tl-chip" style="border-color:var(--done-border);color:#3fb950;">CIL-6266 ✓</span>
-          </div>
-        </div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-label">Phase 6<br>Planned</div>
-        <div class="tl-dot-wrap"><div class="tl-dot planned"></div></div>
-        <div class="tl-content">
-          <h4>Polish &amp; Extensions — Next Up</h4>
-          <p>Windows installation support, Jira MCP docs, PR comment interaction, in-tool feedback, Confluence attachments, eval suite, version awareness, Sonnet 5 upgrade, installation update guide.</p>
-          <div class="tl-chips">
-            <span class="tl-chip" style="border-color:var(--planned-border);color:#79c0ff;">CIL-5545</span>
-            <span class="tl-chip" style="border-color:var(--planned-border);color:#79c0ff;">CIL-5887</span>
-            <span class="tl-chip" style="border-color:var(--planned-border);color:#79c0ff;">CIL-5899</span>
-            <span class="tl-chip" style="border-color:var(--planned-border);color:#79c0ff;">CIL-5989&ndash;5995</span>
-            <span class="tl-chip" style="border-color:var(--planned-border);color:#79c0ff;">CIL-6004</span>
-            <span class="tl-chip" style="border-color:var(--planned-border);color:#79c0ff;">CIL-6154</span>
-            <span class="tl-chip" style="border-color:var(--planned-border);color:#79c0ff;">CIL-6244&ndash;6245</span>
-            <span class="tl-chip" style="border-color:var(--planned-border);color:#79c0ff;">CIL-6256</span>
-            <span class="tl-chip" style="border-color:var(--planned-border);color:#79c0ff;">CIL-6267</span>
-            <span class="tl-chip" style="border-color:var(--planned-border);color:#79c0ff;">CIL-6273</span>
-          </div>
-        </div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-label">Phase 7<br>In Dev</div>
-        <div class="tl-dot-wrap"><div class="tl-dot review-dot"></div></div>
-        <div class="tl-content">
-          <h4>Code Review Pipeline (PROD-13861) — In Development</h4>
-          <p>9 tasks building the /flowforge.review IIE pipeline: Orchestrator, Pre-review Hooks, IIE Agent, Policy Router, Artifact Builder, Author Action Plan, Adjudicator, AC Traceability Gate, Success Metrics. All running in parallel.</p>
-          <div class="tl-chips">
-            <span class="tl-chip" style="border-color:var(--review-border);color:#22d3ee;">CIL-6409</span>
-            <span class="tl-chip" style="border-color:var(--review-border);color:#22d3ee;">CIL-6410</span>
-            <span class="tl-chip" style="border-color:var(--review-border);color:#22d3ee;">CIL-6411</span>
-            <span class="tl-chip" style="border-color:var(--review-border);color:#22d3ee;">CIL-6412</span>
-            <span class="tl-chip" style="border-color:var(--review-border);color:#22d3ee;">CIL-6413</span>
-            <span class="tl-chip" style="border-color:var(--review-border);color:#22d3ee;">CIL-6414</span>
-            <span class="tl-chip" style="border-color:var(--review-border);color:#22d3ee;">CIL-6415</span>
-            <span class="tl-chip" style="border-color:var(--review-border);color:#22d3ee;">CIL-6417</span>
-            <span class="tl-chip" style="border-color:var(--review-border);color:#22d3ee;">CIL-6418</span>
-          </div>
-        </div>
-      </div>
-      <div class="tl-row">
-        <div class="tl-label">Phase 8<br>Future</div>
-        <div class="tl-dot-wrap"><div class="tl-dot future-dot"></div></div>
-        <div class="tl-content">
-          <h4>BA Upstream Pipeline (CIL-6148) — Backlog</h4>
-          <p>Full upstream BA pipeline: 5 commands (1 patch + 4 new). /ff.start, /ff.discover (3 phases, 10 agents &rarr; 3 artifacts), /ff.require enhanced (5 phases, 8 agents), /ff.refine (live facilitation, Jira hierarchy enforcement), /ff.prd (13-section living PRD). Target: &minus;45% BA time per feature, &minus;33% total cycle time.</p>
-          <div class="tl-chips">
-            <span class="tl-chip" style="border-color:var(--future-border);color:#d2a8ff;">CIL-6171&ndash;6178</span>
-          </div>
-        </div>
-      </div>
+  <div class="cluster">
+    <div class="cluster-header"><span class="cluster-icon">🔧</span><span class="cluster-title">Handler, Service &amp; Repository Code Generation</span><span class="cluster-count">~14 tickets</span></div>
+    <div class="capability-box"><div class="capability-label done">Capability Gained</div><div class="capability-title">Production-ready Go handler stubs with service, repository, and DB layers</div><div class="capability-desc">Full Go service skeleton: gRPC/HTTP handler, service interface, repository layer, xo_models integration, database migration stubs. Each generated file follows sisu monorepo patterns — correct package paths, imports, error handling via <code>grpcerr</code>, and logging via <code>sisulog</code>.</div></div>
+    <div class="ticket-grid">
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5405 · CIL-5409 · CIL-5442</span><span class="badge done">Done</span></div><div class="ticket-title">Go handler generation with correct gRPC/HTTP binding patterns</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5495–5496 · CIL-5547</span><span class="badge done">Done</span></div><div class="ticket-title">Service &amp; repository layer generation with interface segregation</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5552–5554 · CIL-5619</span><span class="badge done">Done</span></div><div class="ticket-title">Database migration stubs &amp; xo_models alignment</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5700 · CIL-5718–5722</span><span class="badge done">Done</span></div><div class="ticket-title">Access control (ACL) &amp; rate-limiter catalog stanza generation</div></div>
     </div>
   </div>
 
-  <hr class="section-divider">
-
-  <!-- ═══════════════════════════════════════════════
-       COMPLETED TICKETS (PROD-13009)
-  ════════════════════════════════════════════════ -->
-  <div class="section-header">
-    <div class="section-dot done"></div>
-    <h2>Completed</h2>
-    <span class="section-desc">43 tickets shipped across 5 delivery phases</span>
+  <div class="cluster">
+    <div class="cluster-header"><span class="cluster-icon">🧪</span><span class="cluster-title">Test Scaffolding &amp; Quality Gates</span><span class="cluster-count">~9 tickets</span></div>
+    <div class="capability-box"><div class="capability-label done">Capability Gained</div><div class="capability-title">Auto-generated unit and integration test stubs covering spec ACs</div><div class="capability-desc">FlowForge generates Go test files alongside handler code — test functions map 1:1 to acceptance criteria in the spec. Tests compile and run with <code>./build test.unit</code> without modification. Integration test wiring to service containers is included where the service has a registered target.</div></div>
+    <div class="ticket-grid">
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5733 · CIL-5784 · CIL-5855</span><span class="badge done">Done</span></div><div class="ticket-title">Unit test generation aligned to spec acceptance criteria</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5857 · CIL-5887</span><span class="badge done">Done</span></div><div class="ticket-title">Integration test scaffolding with docker-backed service wiring</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5946–5948 · CIL-5956</span><span class="badge done">Done</span></div><div class="ticket-title">Test quality gates: verify-tests agent &amp; AC traceability mapping</div></div>
+    </div>
   </div>
+
+  <div class="cluster">
+    <div class="cluster-header"><span class="cluster-icon">🔀</span><span class="cluster-title">PR Creation, Jira Integration &amp; Multi-Agent Orchestration</span><span class="cluster-count">~8 tickets</span></div>
+    <div class="capability-box"><div class="capability-label done">Capability Gained</div><div class="capability-title">/flowforge.pr creates a fully formatted GitHub PR linked to Jira</div><div class="capability-desc">One command creates the PR with description (spec summary, test commands, screenshots placeholder, CODEOWNER list), transitions linked Jira tasks to "In Review", and adds PR labels for CI scope (<code>ci-ng</code> / <code>ci-all</code>). Multi-agent verification (verify-constitution, verify-implementation, verify-quality, verify-tests) run in parallel before the PR is opened.</div></div>
+    <div class="ticket-grid">
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5992 · CIL-6050 · CIL-6086</span><span class="badge done">Done</span></div><div class="ticket-title">PR creation with template compliance &amp; Jira task transitions</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6139 · CIL-6255–6258</span><span class="badge done">Done</span></div><div class="ticket-title">Multi-agent verification pipeline (4 parallel verifiers)</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6266 · CIL-6284</span><span class="badge done">Done</span></div><div class="ticket-title">CI label injection &amp; CODEOWNER resolution at PR creation</div></div>
+    </div>
+  </div>
+
+  <div class="cluster">
+    <div class="cluster-header"><span class="cluster-icon">🚀</span><span class="cluster-title">Build Pipeline, Spec Evolution &amp; Platform</span><span class="cluster-count">~10 tickets</span></div>
+    <div class="capability-box"><div class="capability-label done">Capability Gained</div><div class="capability-title">Jenkins CI/CD integration, FlowForge dashboard, and platform tooling</div><div class="capability-desc">FlowForge PR tag bumping to trigger Jenkins pipelines, build-stage improvements, FlowForge dashboard with AI cost tracking per ticket, and platform infrastructure supporting the multi-agent runtime. Spec evolution for lane-routing (Express / Fast / Standard / Heavy) to right-size agent effort per feature scope.</div></div>
+    <div class="ticket-grid">
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">PLAT-7208 · PLAT-7216 · PLAT-7272</span><span class="badge done">Done</span></div><div class="ticket-title">Platform infrastructure for FlowForge multi-agent runtime</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6319 · CIL-6331 · CIL-6357</span><span class="badge done">Done</span></div><div class="ticket-title">Spec structure evolution: lanes, constitution v2, pattern library</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6391 · CIL-6403</span><span class="badge done">Done</span></div><div class="ticket-title">FlowForge dashboard &amp; AI cost reporting per ticket</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6484 · CIL-6486 · CIL-6550</span><span class="badge done">Done</span></div><div class="ticket-title">Build stage reliability improvements &amp; PR tag bumping for Jenkins</div></div>
+      <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6577–6578 · CIL-6580 · CIL-6654</span><span class="badge done">Done</span></div><div class="ticket-title">Spec validator, lane-router, and constitution compliance agents</div></div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-bottom:24px;">
+  <div style="font-size:16px;font-weight:700;color:#d29922;margin-bottom:18px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">⚡</span> Currently In Progress / Review</div>
   <div class="ticket-grid">
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-4949</span><span class="badge done">Done</span></div><div class="ticket-title">[CLAUDE] Integrate Jira</div><div class="ticket-meta"><span class="ticket-type">Improvement</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5182</span><span class="badge done">Done</span></div><div class="ticket-title">Define Reuse Contract And Demo Profile</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5183</span><span class="badge done">Done</span></div><div class="ticket-title">Build Lane Foundation</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5184</span><span class="badge done">Done</span></div><div class="ticket-title">Make Core Pipeline Lane-Aware</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5185</span><span class="badge done">Done</span></div><div class="ticket-title">Add Express And Fast Orchestrators</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5186</span><span class="badge done">Done</span></div><div class="ticket-title">Add QA And Pattern Artifacts</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mahmoud Mohamed</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5187</span><span class="badge done">Done</span></div><div class="ticket-title">Add Utility Commands And Demo Proof</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5207</span><span class="badge done">Done</span></div><div class="ticket-title">Author Go Pattern Library for Chosen Express Category</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mahmoud Mohamed</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5208</span><span class="badge done">Done</span></div><div class="ticket-title">Investigate CI mode</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5247</span><span class="badge done">Done</span></div><div class="ticket-title">Define New Jira Status</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jean Assy</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5248</span><span class="badge done">Done</span></div><div class="ticket-title">Implement GitHub Action to Trigger FlowForge</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5249</span><span class="badge done">Done</span></div><div class="ticket-title">Validate QA Commands' Functionality in FlowForge</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mahmoud Mohamed</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5251</span><span class="badge done">Done</span></div><div class="ticket-title">Create Installation Guide in Confluence</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5252</span><span class="badge done">Done</span></div><div class="ticket-title">Create FlowForge Usage Guide in Confluence</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5268</span><span class="badge done">Done</span></div><div class="ticket-title">Install FlowForge and Initialize Lane Surfaces</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mahmoud Mohamed</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5271</span><span class="badge done">Done</span></div><div class="ticket-title">Refactor QA automation paths for FlowForge skill integration</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5272</span><span class="badge done">Done</span></div><div class="ticket-title">Add comprehensive testing scripts for FlowForge usage scenarios</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5405</span><span class="badge done">Done</span></div><div class="ticket-title">Generate Java automation tests directly along with the Go code</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mahmoud Mohamed</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5409</span><span class="badge done">Done</span></div><div class="ticket-title">Generate QA manual test cases &amp; Jira ticket at end of require step</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mahmoud Mohamed</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5495</span><span class="badge done">Done</span></div><div class="ticket-title">Ensure scope decoupling</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5496</span><span class="badge done">Done</span></div><div class="ticket-title">Document how FlowForge can be updated to a new version by consumers</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5547</span><span class="badge done">Done</span></div><div class="ticket-title">Improve code generation to avoid CI failures</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5552</span><span class="badge done">Done</span></div><div class="ticket-title">Call Jira to create ticket after requirement gathering</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5553</span><span class="badge done">Done</span></div><div class="ticket-title">Read related tickets and branches in automation flow</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5554</span><span class="badge done">Done</span></div><div class="ticket-title">Receive related tickets context on code generation</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5700</span><span class="badge done">Done</span></div><div class="ticket-title">Implement automated code review in sisu repo via Claude Code</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5718</span><span class="badge done">Done</span></div><div class="ticket-title">Exclude dependabot PRs from automatic code review</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5719</span><span class="badge done">Done</span></div><div class="ticket-title">Push Claude usage to Prometheus</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5722</span><span class="badge done">Done</span></div><div class="ticket-title">Improve stability of PR generation</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5784</span><span class="badge done">Done</span></div><div class="ticket-title">Ticket Quality Gate: pre-generation readiness validation</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5855</span><span class="badge done">Done</span></div><div class="ticket-title">FlowForge Automation: post back to Jira when GH fails</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5946</span><span class="badge done">Done</span></div><div class="ticket-title">FlowForge Automation failure on gate check</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5947</span><span class="badge done">Done</span></div><div class="ticket-title">Update FlowForge to skip ticket quality check when specs exist</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5948</span><span class="badge done">Done</span></div><div class="ticket-title">Ticket quality check severity level</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5956</span><span class="badge done">Done</span></div><div class="ticket-title">Prompt user to pull latest main branch &amp; use main branch as a base</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-5992</span><span class="badge done">Done</span></div><div class="ticket-title">Rewrite Jira ticket description template to contain functional requirements and ACs only</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6050</span><span class="badge done">Done</span></div><div class="ticket-title">Pick existing branch generated by FlowForge, rebase to latest main branch</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6086</span><span class="badge done">Done</span></div><div class="ticket-title">Enforce git branch naming template</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6139</span><span class="badge done">Done</span></div><div class="ticket-title">Wrong usage cost added to tickets (bug fix)</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Jo&atilde;o Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6257</span><span class="badge done">Done</span></div><div class="ticket-title">Exclude generated openAPI and protobuf files from generated files guardrail</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">João Duarte</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6258</span><span class="badge done">Done</span></div><div class="ticket-title">Investigate why FF skips existing branch with specs</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6266</span><span class="badge done">Done</span></div><div class="ticket-title">Read ticket ID from branch name &amp; enforce spec name format</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Mario Pinderi</span></div></div>
-    <div class="ticket-card done"><div class="ticket-top"><span class="ticket-key">CIL-6255</span><span class="badge done">Done</span></div><div class="ticket-title">Investigate protobuf and openAPI failures on automation</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">João Duarte</span></div></div>
-    <div class="ticket-card closed"><div class="ticket-top"><span class="ticket-key">CIL-5939</span><span class="badge closed">Closed</span></div><div class="ticket-title">Make QA optional for Verify step (will not do)</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Unassigned</span></div></div>
-    <div class="ticket-card closed"><div class="ticket-top"><span class="ticket-key">CIL-5993</span><span class="badge closed">Closed</span></div><div class="ticket-title">Add session start reminder to update master branch and FlowForge version (will not do)</div><div class="ticket-meta"><span class="ticket-type">Task</span><span class="ticket-assignee">Unassigned</span></div></div>
+    <div class="ticket-card review-card"><div class="ticket-top"><span class="ticket-key">CIL-6736</span><span class="badge review-badge">In Review</span></div><div class="ticket-title">Improve build stage to avoid failures on environment inconsistencies</div><div class="ticket-meta"><span class="ticket-assignee">👤 Mario</span></div></div>
+    <div class="ticket-card review-card"><div class="ticket-top"><span class="ticket-key">CIL-6744</span><span class="badge review-badge">In Review</span></div><div class="ticket-title">Create automation tests after PR creation step</div><div class="ticket-meta"><span class="ticket-assignee">👤 Jean</span></div></div>
+    <div class="ticket-card inprog"><div class="ticket-top"><span class="ticket-key">CIL-6200</span><span class="badge inprog">In Progress</span></div><div class="ticket-title">Add proper CI tests for GitHub Actions workflow</div><div class="ticket-meta"><span class="ticket-assignee">👤 Mario</span></div></div>
   </div>
+</div>
 
-  <hr class="section-divider">
+<div style="margin-bottom:24px;">
+  <div style="font-size:16px;font-weight:700;color:var(--accent);margin-bottom:18px;display:flex;align-items:center;gap:10px;"><span style="font-size:20px;">🔜</span> What You Will Gain — To Do &amp; Backlog</div>
+  <div class="capability-box planned" style="margin-bottom:16px;"><div class="capability-label planned">Coming Soon (To Do)</div><div class="capability-title">PR comment interaction, Windows parity, installation docs</div><div class="capability-desc">Engineers will be able to respond to GitHub review comments directly through FlowForge (CIL-5899). Full Windows-first parity means developers on Windows machines get identical CLI behaviour (CIL-6361). MCP Jira connection issues on Windows resolved (CIL-6586). Updated installation guide for new team members (CIL-6267).</div></div>
+  <div class="ticket-grid">
+    <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-5899</span><span class="badge planned">To Do</span></div><div class="ticket-title">PR Review — interact with review comments programmatically</div><div class="ticket-meta"><span class="ticket-assignee">👤 Mario</span></div></div>
+    <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6267</span><span class="badge planned">To Do</span></div><div class="ticket-title">Update FlowForge installation instructions</div></div>
+    <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6361</span><span class="badge planned">To Do</span></div><div class="ticket-title">Windows-first full feature parity</div></div>
+    <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6586</span><span class="badge planned">To Do</span></div><div class="ticket-title">MCP Jira connection not established on Windows — fix</div></div>
+  </div>
+  <div class="capability-box" style="margin-top:16px;margin-bottom:16px;"><div class="capability-label future">Backlog</div><div class="capability-title">Sonnet 5 upgrade, advanced features &amp; workflow enhancements</div><div class="capability-desc">Upgrade the generation models to Sonnet 5 for higher-quality output (CIL-6244 — Mahmoud). Additional workflow improvements including spec refinement tooling, additional lane configurations, and quality-of-life enhancements identified from production usage.</div></div>
+  <div class="ticket-grid">
+    <div class="ticket-card future-card"><div class="ticket-top"><span class="ticket-key">CIL-6244</span><span class="badge future-badge">Backlog</span></div><div class="ticket-title">Upgrade generation model to Sonnet 5</div><div class="ticket-meta"><span class="ticket-assignee">👤 Mahmoud</span></div></div>
+    <div class="ticket-card future-card"><div class="ticket-top"><span class="ticket-key">CIL-5545 · CIL-5989</span><span class="badge future-badge">Backlog</span></div><div class="ticket-title">Spec refinement tooling enhancements</div></div>
+    <div class="ticket-card future-card"><div class="ticket-top"><span class="ticket-key">CIL-5991 · CIL-5994–5995</span><span class="badge future-badge">Backlog</span></div><div class="ticket-title">Advanced lane configuration &amp; effort scaling</div></div>
+    <div class="ticket-card future-card"><div class="ticket-top"><span class="ticket-key">CIL-6004 · CIL-6154</span><span class="badge future-badge">Backlog</span></div><div class="ticket-title">Workflow quality-of-life: error recovery &amp; partial retry</div></div>
+    <div class="ticket-card future-card"><div class="ticket-top"><span class="ticket-key">CIL-6245 · CIL-6273</span><span class="badge future-badge">Backlog</span></div><div class="ticket-title">Additional generation patterns &amp; spec templates</div></div>
+  </div>
+</div>
 
-  <!-- ═══════════════════════════════════════════════
-       BENEFITS & ROI
-  ════════════════════════════════════════════════ -->
-  <div class="benefits-section">
-    <div class="benefits-title">Value &amp; Benefits by Category</div>
-    <div class="benefits-sub">What each phase and capability group delivers for the engineering and product teams</div>
+<hr class="divider">
 
-    <div class="benefit-group-label">
-      <div class="benefit-group-icon" style="background:#1f3a5f;">&#9889;</div>
-      <div><h3>Developer Velocity</h3><span class="sub">Reduce time from spec to merged PR</span></div>
-    </div>
-    <div class="benefit-cards">
-      <div class="benefit-card vel">
-        <div class="bcard-title">Lane-based generation (Standard / Express / Fast)</div>
-        <div class="bcard-body">Teams choose build depth per ticket — routine tasks use Fast lane to skip full review cycles, cutting multi-hour manual effort to minutes.</div>
-        <span class="bcard-tag now">Available Now</span>
-      </div>
-      <div class="benefit-card vel">
-        <div class="bcard-title">Stale-context guard &amp; automatic branch rebase</div>
-        <div class="bcard-body">Prevents wasted generation runs on outdated main — prompts pull before build, and rebases existing FlowForge branches to latest main automatically.</div>
-        <span class="bcard-tag now">Available Now</span>
-      </div>
-      <div class="benefit-card vel">
-        <div class="bcard-title">Automated pre-analysis replaces solo engineer review step</div>
-        <div class="bcard-body">/flowforge.review generates the spec-alignment, anti-pattern, and security findings that today take a solo engineer significant time to write up — so peer review starts immediately after the author pushes.</div>
-        <span class="bcard-tag review">Code Review Phase</span>
-      </div>
-      <div class="benefit-card vel">
-        <div class="bcard-title">PR comment interaction (planned)</div>
-        <div class="bcard-body">FlowForge will read reviewer comments on a PR and self-apply requested changes — eliminating the back-and-forth review loop for simple change requests.</div>
-        <span class="bcard-tag future">Coming Soon</span>
-      </div>
-    </div>
+<!-- EPIC 2: PROD-13861 -->
+<div class="section-header">
+  <div class="section-dot review-dot"></div>
+  <h2>PROD-13861 — Code Review (/flowforge.review)</h2>
+  <span class="section-desc" style="color:#22d3ee;">◦ Planned · 9 Tasks To Do</span>
+</div>
 
-    <div class="benefit-group-label">
-      <div class="benefit-group-icon" style="background:#0d1b0f;">&#9989;</div>
-      <div><h3>Code Quality &amp; Correctness</h3><span class="sub">Catch defects before human review</span></div>
+<div class="epic-header review-card">
+  <div class="epic-header-top">
+    <div class="epic-icon review">🔍</div>
+    <div class="epic-info">
+      <div class="epic-key">PROD-13861</div>
+      <h3>Multi-Agent AI Code Review Pipeline</h3>
+      <p>A fully automated, multi-agent code review system that evaluates every PR before human reviewers see it. Nine specialised agents — each examining a different quality dimension — run in parallel and produce structured findings, grade the implementation against spec ACs, and generate an author action plan with specific remediation steps.</p>
+      <div class="epic-badge-row" style="margin-top:12px;"><span class="pill">◦ All 9 tasks To Do</span><span class="pill rev">◦ Zero tickets started</span></div>
     </div>
-    <div class="benefit-cards">
-      <div class="benefit-card qual">
-        <div class="bcard-title">Ticket quality gate before generation</div>
-        <div class="bcard-body">Validates that a spec meets readiness criteria before code generation begins. Blocks low-quality tickets early — before developer time is spent on review of broken output.</div>
-        <span class="bcard-tag now">Available Now</span>
-      </div>
-      <div class="benefit-card qual">
-        <div class="bcard-title">4-verifier + Devil's Advocate compliance check</div>
-        <div class="bcard-body">Architecture, Security, QA, and Go Convention verifiers review every generated PR. A Devil's Advocate agent then stress-tests the consensus — catching approvals that should be challenged.</div>
-        <span class="bcard-tag now">Available Now</span>
-      </div>
-      <div class="benefit-card qual">
-        <div class="bcard-title">IIE Agent — gated, evidence-driven review</div>
-        <div class="bcard-body">The Independent Implementation Examiner is structurally isolated — it cannot see builder conclusions, cannot run tools, and is adversarially oriented to disprove readiness. Each finding requires 12 fields including reproduction scenario, impact, and a required test. Gate requires zero criticals, zero undismissed highs, and 100% AC traceability.</div>
-        <span class="bcard-tag review">Code Review Phase</span>
-      </div>
-      <div class="benefit-card qual">
-        <div class="bcard-title">Java automation tests generated alongside Go code</div>
-        <div class="bcard-body">Selenium/JUnit test cases for new endpoints are generated in the same pass as the Go implementation — no manual handoff to the QA team for standard cases.</div>
-        <span class="bcard-tag now">Available Now</span>
-      </div>
-    </div>
+  </div>
+</div>
 
-    <div class="benefit-group-label">
-      <div class="benefit-group-icon" style="background:#272012;">&#128202;</div>
-      <div><h3>Observability &amp; CI Automation</h3><span class="sub">Keep teams informed without manual monitoring</span></div>
-    </div>
-    <div class="benefit-cards">
-      <div class="benefit-card obs">
-        <div class="bcard-title">Claude usage cost tracking &rarr; Prometheus</div>
-        <div class="bcard-body">Every FlowForge session pushes token cost to Prometheus. Teams can track AI spend per ticket, per engineer, and per feature — and optimize lane choices against actual cost data.</div>
-        <span class="bcard-tag now">Available Now</span>
-      </div>
-      <div class="benefit-card obs">
-        <div class="bcard-title">GitHub Actions post-back to Jira on CI failure</div>
-        <div class="bcard-body">When a CI workflow fails on a FlowForge branch, Jira is updated automatically with failure context. No need to manually ping engineers or update ticket status.</div>
-        <span class="bcard-tag now">Available Now</span>
-      </div>
-      <div class="benefit-card obs">
-        <div class="bcard-title">False-positive rate tracking across PRs</div>
-        <div class="bcard-body">Rolling 20-PR window tracks IIE finding acceptance vs rejection. Alerts when false-positive rate exceeds 30% — gives a data-driven signal to tune the IIE before it erodes team trust.</div>
-        <span class="bcard-tag review">Code Review Phase</span>
-      </div>
-      <div class="benefit-card obs">
-        <div class="bcard-title">Automated code review on every PR</div>
-        <div class="bcard-body">Claude Code reviews all non-dependabot PRs automatically — immediate feedback on style, correctness, and CIL patterns before human reviewers engage.</div>
-        <span class="bcard-tag now">Available Now</span>
-      </div>
-    </div>
+<div style="margin-bottom:24px;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;">Personas Impacted</div>
+  <div class="persona-row">
+    <div class="persona-chip primary"><div class="persona-avatar">🔍</div><div><div class="persona-name">Code Reviewers</div><div class="persona-role">Receive pre-screened PRs — no more trivial finding triage</div></div></div>
+    <div class="persona-chip primary"><div class="persona-avatar">👨‍💻</div><div><div class="persona-name">PR Authors</div><div class="persona-role">Get structured feedback + action plan before sending for human review</div></div></div>
+    <div class="persona-chip"><div class="persona-avatar">🏛️</div><div><div class="persona-name">Tech Leads</div><div class="persona-role">Quality gate enforcement without line-by-line review burden</div></div></div>
+  </div>
+</div>
 
-    <div class="benefit-group-label">
-      <div class="benefit-group-icon" style="background:#1a1040;">&#127919;</div>
-      <div><h3>BA / Product Productivity</h3><span class="sub">CIL-6148 — Close the 6&ndash;10h upstream gap</span></div>
-    </div>
-    <div class="benefit-cards">
-      <div class="benefit-card ba">
-        <div class="bcard-title">/ff.discover — 3-phase, 10-agent upstream research in one command</div>
-        <div class="bcard-body">Problem Framing (4 agents sequential) &rarr; Landscape Research (Confluence Scanner + Jira Linker with 4-dimension search and full comment threads + Pattern Scout, parallel, merged by Research Synthesiser) &rarr; Solution Ideation (3 Option Generators + Recommender + Lane Estimator). Produces 0-discovery.md, 0-research.md, 0-options.md.</div>
-        <span class="bcard-tag future">CIL-6148</span>
-      </div>
-      <div class="benefit-card ba">
-        <div class="bcard-title">/ff.require enhanced — 5 phases, 8 agents, Jira tickets + agenda</div>
-        <div class="bcard-body">Phase 4: Decomposition Assessor writes 0-split-map.md and creates sub-specs. Phase 5: Agenda Builder writes 0-refine-agenda.md where each unresolved finding becomes a numbered item with 2&ndash;3 suggested resolutions. Jira tickets at end have 4-section description.</div>
-        <span class="bcard-tag future">CIL-6148</span>
-      </div>
-      <div class="benefit-card ba">
-        <div class="bcard-title">/ff.refine — live meeting facilitation with Jira hierarchy enforcement</div>
-        <div class="bcard-body">Loads agenda from /ff.require Phase 5. Guided item-by-item loop with option selection. Spec Editor updates 1-spec.md; Jira Sync enforces hierarchy (theme &rarr; initiative &rarr; epic &rarr; task; no parentless tickets below theme).</div>
-        <span class="bcard-tag future">CIL-6148</span>
-      </div>
-      <div class="benefit-card ba">
-        <div class="bcard-title">/ff.prd — 13-section living PRD with Confluence auto-update</div>
-        <div class="bcard-body">Assembles all upstream outputs into a 13-section stakeholder PRD. Persists as a living document — auto-triggers on any engineering phase that modifies 1-spec.md. No manual document assembly required.</div>
-        <span class="bcard-tag future">CIL-6148</span>
+<div class="progress-section">
+  <div class="progress-title">Delivery Progress</div>
+  <div class="progress-sub">0 / 9 tasks started — all To Do</div>
+  <div class="progress-bar-track"><div class="progress-fill planned" style="width:100%;opacity:.3;"></div></div>
+  <div class="progress-legend"><span class="prog-legend-item"><span class="prog-dot" style="background:var(--planned-border);"></span> To Do (9)</span></div>
+</div>
+
+<div class="impact-grid">
+  <div class="impact-card before">
+    <div class="impact-card-label before">Without /flowforge.review</div>
+    <div class="impact-item">Reviewer reads entire diff cold with no context</div>
+    <div class="impact-item">Spec compliance is manual and error-prone</div>
+    <div class="impact-item">Security &amp; pattern issues found late in review cycle</div>
+    <div class="impact-item">Inconsistent review depth across different reviewers</div>
+    <div class="impact-item">Author gets vague comments — unclear remediation</div>
+  </div>
+  <div class="impact-card after">
+    <div class="impact-card-label after">With /flowforge.review</div>
+    <div class="impact-item">9 AI agents pre-screen each PR in parallel</div>
+    <div class="impact-item">AC traceability gate blocks merge if spec misaligned</div>
+    <div class="impact-item">Security, performance, and style issues flagged automatically</div>
+    <div class="impact-item">Consistent quality baseline for every PR, every time</div>
+    <div class="impact-item">Author receives ranked findings + specific fix instructions</div>
+  </div>
+</div>
+
+<div class="arch-diagram review-border">
+  <div class="arch-title review">Multi-Agent Review Pipeline Architecture</div>
+  <div class="arch-flow">
+    <div class="arch-node human">PR Opened</div><div class="arch-arrow">→</div>
+    <div class="arch-node rev">T1: Orchestrator</div><div class="arch-arrow">→</div>
+    <div class="arch-node rev">T2: Pre-review Hooks</div><div class="arch-arrow">→</div>
+    <div class="arch-node rev">T3: IIE Agent</div><div class="arch-arrow">+</div>
+    <div class="arch-node rev">T4: Policy Router</div><div class="arch-arrow">→</div>
+    <div class="arch-node rev">T5: Artifact/PR/Jira</div><div class="arch-arrow">→</div>
+    <div class="arch-node rev">T6: Author Action Plan</div><div class="arch-arrow">→</div>
+    <div class="arch-node rev">T7: Adjudicator</div><div class="arch-arrow">→</div>
+    <div class="arch-node rev">T8: AC Gate</div><div class="arch-arrow">→</div>
+    <div class="arch-node rev">T9: Metrics</div><div class="arch-arrow">→</div>
+    <div class="arch-node human">Human Review</div>
+  </div>
+  <div class="arch-desc">
+    <div class="arch-item rev"><div class="arch-item-title" style="color:#22d3ee;">T1 — Orchestrator</div><div class="arch-item-body">Coordinates agent fan-out, collects findings, deduplicates across dimensions before escalation.</div></div>
+    <div class="arch-item rev"><div class="arch-item-title" style="color:#22d3ee;">T2 — Pre-review Hooks</div><div class="arch-item-body">Validates build passes, lint clean, test suite green — gates entry into review pipeline.</div></div>
+    <div class="arch-item rev"><div class="arch-item-title" style="color:#22d3ee;">T3 — IIE Agent</div><div class="arch-item-body">Issue Identification &amp; Explanation — deep semantic analysis across correctness, security, and performance dimensions.</div></div>
+    <div class="arch-item rev"><div class="arch-item-title" style="color:#22d3ee;">T4 — Policy Router</div><div class="arch-item-body">Routes findings to constitution, pattern, and API contract validators — ensures architectural compliance.</div></div>
+    <div class="arch-item rev"><div class="arch-item-title" style="color:#22d3ee;">T6 — Author Action Plan</div><div class="arch-item-body">Transforms raw findings into a prioritised, actionable remediation checklist with file/line references.</div></div>
+    <div class="arch-item rev"><div class="arch-item-title" style="color:#22d3ee;">T7 — Adjudicator</div><div class="arch-item-body">Final scoring agent: grades overall PR quality and decides approve / request-changes / block.</div></div>
+    <div class="arch-item rev"><div class="arch-item-title" style="color:#22d3ee;">T8 — AC Traceability Gate</div><div class="arch-item-body">Verifies every spec acceptance criterion is addressed in the implementation — hard block if gaps.</div></div>
+    <div class="arch-item rev"><div class="arch-item-title" style="color:#22d3ee;">T9 — Success Metrics</div><div class="arch-item-body">Emits quality metrics per review: findings count, AC coverage %, review time, model cost.</div></div>
+  </div>
+</div>
+
+<div class="ticket-grid">
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6409</span><span class="badge planned">To Do</span></div><div class="ticket-title">T1 — Review Orchestrator: fan-out coordination &amp; finding dedup</div></div>
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6410</span><span class="badge planned">To Do</span></div><div class="ticket-title">T2 — Pre-review Hooks: build, lint &amp; test gate</div></div>
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6411</span><span class="badge planned">To Do</span></div><div class="ticket-title">T3 — IIE Agent: semantic issue identification &amp; explanation</div></div>
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6412</span><span class="badge planned">To Do</span></div><div class="ticket-title">T4 — Policy Router: constitution &amp; API contract enforcement</div></div>
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6413</span><span class="badge planned">To Do</span></div><div class="ticket-title">T5 — Artifact, PR, and Jira update actions</div></div>
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6414</span><span class="badge planned">To Do</span></div><div class="ticket-title">T6 — Author Action Plan: ranked remediation checklist</div></div>
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6415</span><span class="badge planned">To Do</span></div><div class="ticket-title">T7 — Adjudicator: overall grade &amp; approve/block decision</div></div>
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6417</span><span class="badge planned">To Do</span></div><div class="ticket-title">T8 — AC Traceability Gate: spec coverage hard block</div></div>
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6418</span><span class="badge planned">To Do</span></div><div class="ticket-title">T9 — Success Metrics: quality KPI emission per review</div></div>
+</div>
+
+<hr class="divider">
+
+<!-- EPIC 3: CIL-6148 -->
+<div class="section-header">
+  <div class="section-dot future-dot"></div>
+  <h2>CIL-6148 — BA/PO Upstream Pipeline</h2>
+  <span class="section-desc" style="color:#d2a8ff;">◑ In Development · 1 In Review, 4 To Do</span>
+</div>
+
+<div class="epic-header ba-card">
+  <div class="epic-header-top">
+    <div class="epic-icon ba">🧭</div>
+    <div class="epic-info">
+      <div class="epic-key">CIL-6148</div>
+      <h3>Product Discovery &amp; Requirement Upstream Pipeline</h3>
+      <p>Extends FlowForge upward into the product discovery phase. Business Analysts and Product Owners gain AI-powered commands to discover capability scope, generate structured PRDs, refine requirements, and hand off fully-formed specs to the engineering generation pipeline — without writing a single line of code or manually templating Jira tickets.</p>
+      <div class="epic-badge-row" style="margin-top:12px;">
+        <span class="pill" style="background:var(--review-bg);border-color:var(--review-border);color:#22d3ee;">◑ In Review: 1</span>
+        <span class="pill">◦ To Do: 4</span>
+        <span class="pill ba">Closed tickets excluded</span>
       </div>
     </div>
   </div>
+</div>
+
+<div style="margin-bottom:24px;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;">Personas Impacted</div>
+  <div class="persona-row">
+    <div class="persona-chip primary"><div class="persona-avatar">📋</div><div><div class="persona-name">Business Analysts</div><div class="persona-role">Primary driver — uses /ff.discover → /ff.prd to define features</div></div></div>
+    <div class="persona-chip primary"><div class="persona-avatar">🎯</div><div><div class="persona-name">Product Owners / Managers</div><div class="persona-role">Validates &amp; refines AI-generated PRDs, approves scope</div></div></div>
+    <div class="persona-chip"><div class="persona-avatar">👨‍💻</div><div><div class="persona-name">Engineers</div><div class="persona-role">Receives pre-structured spec — less back-and-forth with stakeholders</div></div></div>
+  </div>
+</div>
+
+<div class="progress-section">
+  <div class="progress-title">Delivery Progress</div>
+  <div class="progress-sub">1 task in code review (CIL-6171 — João Duarte) · 4 tasks To Do · Closed tickets excluded</div>
+  <div class="progress-bar-track">
+    <div class="progress-fill review-fill" style="width:17%;"></div>
+    <div class="progress-fill planned" style="width:66%;"></div>
+  </div>
+  <div class="progress-legend">
+    <span class="prog-legend-item"><span class="prog-dot" style="background:var(--review-border);"></span> In Code Review (1)</span>
+    <span class="prog-legend-item"><span class="prog-dot" style="background:var(--planned-border);"></span> To Do (4)</span>
+  </div>
+</div>
+
+<div class="impact-grid">
+  <div class="impact-card before">
+    <div class="impact-card-label before">Today's BA/PO Workflow</div>
+    <div class="impact-item">BA interviews stakeholders, writes requirements by hand</div>
+    <div class="impact-item">Manual Confluence page for PRD — format inconsistent</div>
+    <div class="impact-item">Engineer re-interprets requirements → misalignment</div>
+    <div class="impact-item">Jira ticket creation is manual, often missing ACs</div>
+    <div class="impact-item">Long feedback loop between discovery and first line of code</div>
+  </div>
+  <div class="impact-card future">
+    <div class="impact-card-label future">With CIL-6148 Complete</div>
+    <div class="impact-item">/ff.discover maps existing capabilities and gaps</div>
+    <div class="impact-item">/ff.prd generates a structured PRD in one command</div>
+    <div class="impact-item">/ff.refine improves PRD through conversational iteration</div>
+    <div class="impact-item">/ff.require generates AC-complete Jira tickets automatically</div>
+    <div class="impact-item">Handoff to /flowforge.start is seamless — zero re-work</div>
+  </div>
+</div>
+
+<div class="arch-diagram ba-border">
+  <div class="arch-title ba">BA/PO Upstream Pipeline Flow</div>
+  <div class="arch-flow">
+    <div class="arch-node ba">/ff.discover</div><div class="arch-arrow">→</div>
+    <div class="arch-node ba">/ff.prd</div><div class="arch-arrow">→</div>
+    <div class="arch-node ba">/ff.refine</div><div class="arch-arrow">→</div>
+    <div class="arch-node ba">/ff.require</div><div class="arch-arrow">→</div>
+    <div class="arch-node gen">/flowforge.start</div><div class="arch-arrow">→</div>
+    <div class="arch-node gen">/flowforge</div>
+  </div>
+  <div class="arch-desc">
+    <div class="arch-item ba"><div class="arch-item-title" style="color:#d2a8ff;">T001 — /flowforge.start patch</div><div class="arch-item-body">Patch /flowforge.start to accept upstream PRD output as direct input — bridges BA work to code generation. <strong>In Code Review (João Duarte)</strong>.</div></div>
+    <div class="arch-item ba"><div class="arch-item-title" style="color:#d2a8ff;">T002 — /ff.discover</div><div class="arch-item-body">Reads existing service landscape and capabilities, identifies gaps against the proposed feature, outputs a structured gap analysis for the BA.</div></div>
+    <div class="arch-item ba"><div class="arch-item-title" style="color:#d2a8ff;">T005 — /ff.require enhancement</div><div class="arch-item-body">Enhanced /ff.require generates AC-complete Jira tickets directly from PRD sections — no manual ticket creation.</div></div>
+    <div class="arch-item ba"><div class="arch-item-title" style="color:#d2a8ff;">T007 — /ff.refine</div><div class="arch-item-body">Conversational PRD refinement agent — BA can iterate on requirements with AI assistance before handing off to engineering.</div></div>
+    <div class="arch-item ba"><div class="arch-item-title" style="color:#d2a8ff;">T008 — /ff.prd</div><div class="arch-item-body">Full PRD document generation from discovery output — structured sections, user stories, acceptance criteria, constraints.</div></div>
+  </div>
+</div>
+
+<div class="ticket-grid">
+  <div class="ticket-card review-card"><div class="ticket-top"><span class="ticket-key">CIL-6171</span><span class="badge review-badge">In Review</span></div><div class="ticket-title">T001 — Patch /flowforge.start to accept PRD input from upstream pipeline</div><div class="ticket-meta"><span class="ticket-assignee">👤 João Duarte</span></div></div>
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6172</span><span class="badge planned">To Do</span></div><div class="ticket-title">T002 — /ff.discover: capability gap analysis against existing services</div><div class="ticket-meta"><span class="ticket-assignee">👤 Sascha</span></div></div>
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6175</span><span class="badge planned">To Do</span></div><div class="ticket-title">T005 — Enhance /ff.require: AC-complete Jira ticket generation from PRD</div><div class="ticket-meta"><span class="ticket-assignee">👤 Sascha</span></div></div>
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6177</span><span class="badge planned">To Do</span></div><div class="ticket-title">T007 — /ff.refine: conversational PRD iteration agent</div><div class="ticket-meta"><span class="ticket-assignee">👤 Sascha</span></div></div>
+  <div class="ticket-card planned"><div class="ticket-top"><span class="ticket-key">CIL-6178</span><span class="badge planned">To Do</span></div><div class="ticket-title">T008 — /ff.prd: structured PRD generation from discovery + requirements</div><div class="ticket-meta"><span class="ticket-assignee">👤 Sascha</span></div></div>
+</div>
+
+<hr class="divider">
+
+<!-- EPIC 4: PROD-13946 -->
+<div class="section-header">
+  <div class="section-dot integrate-dot"></div>
+  <h2>PROD-13946 — /flowforge.integration &amp; /flowforge.integration.status</h2>
+  <span class="section-desc" style="color:#f78166;">◉ New Epic · 8 Tasks To Do</span>
+</div>
+
+<div class="epic-header int-card">
+  <div class="epic-header-top">
+    <div class="epic-icon int">🔌</div>
+    <div class="epic-info">
+      <div class="epic-key">PROD-13946</div>
+      <h3>Guided Partner Integration Onboarding</h3>
+      <p>A brand-new FlowForge skill that guides integration managers and business stakeholders through the complete partner onboarding process — without requiring Go engineering expertise. The command asks the right questions, validates inputs, and generates all production artifacts: catalog stanzas, access control rules, rate-limiter config, auth client manifests, adapter skeletons, and Jira tickets — in a single guided session.</p>
+      <div class="epic-badge-row" style="margin-top:12px;">
+        <span class="pill int">◉ New — 8 tasks To Do</span>
+        <span class="pill">spec: specs/ff-integrate/1-spec.md</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-bottom:24px;">
+  <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:10px;">Personas Impacted</div>
+  <div class="persona-row">
+    <div class="persona-chip primary"><div class="persona-avatar">🤝</div><div><div class="persona-name">Integration Managers</div><div class="persona-role">Primary driver — owns partner onboarding, non-engineer profile</div></div></div>
+    <div class="persona-chip primary"><div class="persona-avatar">📊</div><div><div class="persona-name">Business Stakeholders</div><div class="persona-role">Tracks onboarding status via /flowforge.integration.status dashboard</div></div></div>
+    <div class="persona-chip"><div class="persona-avatar">👨‍💻</div><div><div class="persona-name">Engineers</div><div class="persona-role">Receives fully-formed artifacts — implements adapter skeleton, not boilerplate</div></div></div>
+    <div class="persona-chip"><div class="persona-avatar">🏛️</div><div><div class="persona-name">Platform / Ops</div><div class="persona-role">Gains structured audit trail for every partner onboarding event</div></div></div>
+  </div>
+</div>
+
+<div class="progress-section">
+  <div class="progress-title">Delivery Progress</div>
+  <div class="progress-sub">8 tasks — all To Do. Spec approved: specs/ff-integrate/1-spec.md</div>
+  <div class="progress-bar-track"><div class="progress-fill int-fill" style="width:100%;opacity:.3;"></div></div>
+  <div class="progress-legend"><span class="prog-legend-item"><span class="prog-dot" style="background:var(--integrate-border);"></span> To Do (8)</span></div>
+</div>
+
+<div class="capability-box int-box" style="margin-bottom:20px;">
+  <div class="capability-label int">Strategic Rationale</div>
+  <div class="capability-title">Eliminating the engineering bottleneck in partner onboarding</div>
+  <div class="capability-desc">Today, onboarding a new insurance partner requires a senior Go engineer to: understand the partner's LoB and endpoint topology, manually write catalog stanzas, configure ACL and rate-limiter rules, scaffold an adapter skeleton, write auth client manifests, and create Jira tickets for the implementation work. This is 2–3 days of boilerplate that any skilled engineer resents and any non-engineer cannot do at all. <code>/flowforge.integration</code> replaces that entire sequence with a single guided workflow — moving the bottleneck from engineering capacity to partner readiness.</div>
+</div>
+
+<div class="impact-grid">
+  <div class="impact-card before">
+    <div class="impact-card-label before">Today: Partner Onboarding</div>
+    <div class="impact-item">Senior engineer required for all artifact generation</div>
+    <div class="impact-item">Manual catalog stanza, ACL, rate-limiter config</div>
+    <div class="impact-item">Auth client manifest written from scratch</div>
+    <div class="impact-item">Adapter skeleton copy-pasted from previous partner</div>
+    <div class="impact-item">Jira tickets created manually — often incomplete</div>
+    <div class="impact-item">No self-service status visibility for non-engineers</div>
+    <div class="impact-item">Typical lead time: 2–3 engineering days per partner</div>
+  </div>
+  <div class="impact-card future">
+    <div class="impact-card-label future">With /flowforge.integration</div>
+    <div class="impact-item">Integration manager runs guided CLI — no Go expertise needed</div>
+    <div class="impact-item">Partner identity, LoB, endpoint topology collected via prompts</div>
+    <div class="impact-item">All artifacts generated: catalog, ACL, rate-limiter in minutes</div>
+    <div class="impact-item">Auth client manifest &amp; adapter skeleton auto-generated</div>
+    <div class="impact-item">Jira tickets with full AC definition created automatically</div>
+    <div class="impact-item">/flowforge.integration.status: real-time dashboard skill</div>
+    <div class="impact-item">Typical lead time: &lt;1 hour from first run to artifacts ready</div>
+  </div>
+</div>
+
+<div class="arch-diagram int-border">
+  <div class="arch-title int">/flowforge.integration Guided Flow Architecture</div>
+  <div class="arch-flow">
+    <div class="arch-node human">Integration Manager</div><div class="arch-arrow">→</div>
+    <div class="arch-node int">T1: Guided Input<br>(identity + LoB + endpoints)</div><div class="arch-arrow">→</div>
+    <div class="arch-node int">T2: Product Code<br>Generation + Validation</div><div class="arch-arrow">→</div>
+    <div class="arch-node int">T3: Admin UI<br>Checkpoint</div><div class="arch-arrow">→</div>
+    <div class="arch-node int">T4: Catalog Stanza<br>ACL + Rate Limiter</div><div class="arch-arrow">→</div>
+    <div class="arch-node int">T5: Auth Manifest<br>+ Adapter Skeleton</div><div class="arch-arrow">→</div>
+    <div class="arch-node int">T6: Jira Ticket<br>Generation</div><div class="arch-arrow">→</div>
+    <div class="arch-node gen">Engineer Implements<br>Adapter</div>
+  </div>
+  <div class="arch-desc">
+    <div class="arch-item int"><div class="arch-item-title" style="color:#f78166;">T1 — Guided Input Phases</div><div class="arch-item-body">Multi-phase interactive questionnaire: partner identity, line-of-business, endpoint selection. Validates inputs against existing catalog to prevent duplicates.</div></div>
+    <div class="arch-item int"><div class="arch-item-title" style="color:#f78166;">T2 — Product Code Generation</div><div class="arch-item-body">Derives unique product code from partner identity + LoB. Runs uniqueness check against existing catalog — retries on collision.</div></div>
+    <div class="arch-item int"><div class="arch-item-title" style="color:#f78166;">T3 — Admin UI Checkpoint</div><div class="arch-item-body">Intermediate checkpoint for integration manager to verify selections before artifact generation. Collects backend-specific IDs and flow handler decisions.</div></div>
+    <div class="arch-item int"><div class="arch-item-title" style="color:#f78166;">T4 — Catalog &amp; ACL Artifacts</div><div class="arch-item-body">Generates catalog stanza, access control rules, and rate-limiter configuration based on partner profile and endpoint topology.</div></div>
+    <div class="arch-item int"><div class="arch-item-title" style="color:#f78166;">T5 — Auth &amp; Adapter</div><div class="arch-item-body">Generates auth client manifest and adapter skeleton with correct interface bindings — engineer fills business logic only.</div></div>
+    <div class="arch-item int"><div class="arch-item-title" style="color:#f78166;">T6 — Jira Output</div><div class="arch-item-body">Creates fully-formed Jira tasks with acceptance criteria, assignee suggestions, and story points — linked to the integration epic.</div></div>
+    <div class="arch-item int"><div class="arch-item-title" style="color:#f78166;">T7 — Resume &amp; Additions</div><div class="arch-item-body">Resume mode: re-run for an existing partner to add endpoints without re-generating stable artifacts. Additions mode: incremental updates only.</div></div>
+    <div class="arch-item int"><div class="arch-item-title" style="color:#f78166;">T8 — /ff.integration.status</div><div class="arch-item-body">Real-time dashboard skill showing all active integrations, their onboarding stage, artifact status, and outstanding engineering tasks.</div></div>
+  </div>
+</div>
+
+<div class="ticket-grid">
+  <div class="ticket-card int-card"><div class="ticket-top"><span class="ticket-key">CIL-6785</span><span class="badge int-badge">To Do</span></div><div class="ticket-title">T001 — Guided input phases: partner identity, LoB, and endpoint selection</div></div>
+  <div class="ticket-card int-card"><div class="ticket-top"><span class="ticket-key">CIL-6786</span><span class="badge int-badge">To Do</span></div><div class="ticket-title">T002 — Product code generation and uniqueness validation</div></div>
+  <div class="ticket-card int-card"><div class="ticket-top"><span class="ticket-key">CIL-6787</span><span class="badge int-badge">To Do</span></div><div class="ticket-title">T003 — Admin UI checkpoint, flow handler decision, and backend-specific IDs</div></div>
+  <div class="ticket-card int-card"><div class="ticket-top"><span class="ticket-key">CIL-6788</span><span class="badge int-badge">To Do</span></div><div class="ticket-title">T004 — Artifact generation: catalog stanza, access control, rate limiter</div></div>
+  <div class="ticket-card int-card"><div class="ticket-top"><span class="ticket-key">CIL-6789</span><span class="badge int-badge">To Do</span></div><div class="ticket-title">T005 — Artifact generation: auth client manifest and adapter skeleton</div></div>
+  <div class="ticket-card int-card"><div class="ticket-top"><span class="ticket-key">CIL-6790</span><span class="badge int-badge">To Do</span></div><div class="ticket-title">T006 — Jira ticket creation output with AC definitions</div></div>
+  <div class="ticket-card int-card"><div class="ticket-top"><span class="ticket-key">CIL-6791</span><span class="badge int-badge">To Do</span></div><div class="ticket-title">T007 — Resume mode and additions mode for existing partners</div></div>
+  <div class="ticket-card int-card"><div class="ticket-top"><span class="ticket-key">CIL-6792</span><span class="badge int-badge">To Do</span></div><div class="ticket-title">T008 — /flowforge.integration.status dashboard skill</div></div>
+</div>
 
 </main>
 
 <footer>
-  FlowForge Roadmap &middot; Sourced from <a href="https://sisu-agile.atlassian.net/browse/PROD-13009" target="_blank">PROD-13009</a> &amp; <a href="https://sisu-agile.atlassian.net/browse/CIL-6148" target="_blank">CIL-6148</a> &amp; <a href="https://sisu-agile.atlassian.net/browse/PROD-13861" target="_blank">PROD-13861</a> &middot; Last updated 2026-07-20 &middot; <a href="https://smehlhase1.github.io/flowforge-ba-impact/" target="_blank">BA Impact Analysis</a>
+  FlowForge Roadmap · simplesurance · Last updated 2026-07-24 · Data sourced from Jira (sisu-agile.atlassian.net) · Closed tickets excluded
 </footer>
 
+<script>
+  document.querySelectorAll('.collapsible-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('open');
+      const target = document.querySelector(btn.dataset.target);
+      if (target) target.classList.toggle('open');
+    });
+  });
+</script>
 </body>
 </html>
